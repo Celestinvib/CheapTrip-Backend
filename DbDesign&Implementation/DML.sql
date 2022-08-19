@@ -80,8 +80,8 @@ create table Accomodations_Features (
     feature_id int,
 	CONSTRAINT FK_AccomadationsFeatures FOREIGN KEY (accomodation_id)
 	REFERENCES Accomodations (id),
-	CONSTRAINT FK_FeaturesAccomadations FOREIGN KEY (feature_id)
-	REFERENCES Features (id)
+	CONSTRAINT FK_FeaturesAccomadations FOREIGN KEY (feature_id) 
+	REFERENCES Features (id) ON DELETE CASCADE
 );
 
 create table Bargains_Users (
