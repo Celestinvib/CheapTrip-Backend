@@ -1,5 +1,6 @@
 package com.cheaptrip.demo.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,36 @@ public class AccommodationController {
 	public List<Accommodation> listAccommodations(){
 		
 		return accommodationServiceImpl.listAccommodations();
+	}
+	
+	@GetMapping("/alojamientos/categorias/{categoria}")
+	public List<Accommodation> findByCategory(@PathVariable(name="categoria") String category){
+		
+		List<Accommodation> accommodations = listAccommodations();
+		List<Accommodation>accommodationsWCategory = Arrays.asList() ;
+		
+		for (int i = 0; i < accommodations.size(); i++) { 
+			if (accommodations.get(i).getCategory().equals(category)) { //if a accommodation has the same category that the desired one 
+				accommodationsWCategory.add(accommodations.get(i)); //Is added to the List that will be returned 
+			}
+		}
+		
+		return accommodationsWCategory;
+	}
+	
+	@GetMapping("/alojamientos/valoracion-minima/{valoracion}")
+	public List<Accommodation> filterByThisRatingOrUpper(@PathVariable(name="valoracion") double rating){
+		
+		List<Accommodation> accommodations = listAccommodations();
+		List<Accommodation>accommodationsWRating = Arrays.asList() ;
+		
+		for (int i = 0; i < accommodations.size(); i++) { 
+			if (accommodations.get(i).getRating() >= rating) { //if a accommodation has the same rating or more that the desired one 
+				accommodationsWRating.add(accommodations.get(i)); //Is added to the List that will be returned 
+			}
+		}
+		
+		return accommodationsWRating;
 	}
 	
 	@PostMapping("/alojamientos")
