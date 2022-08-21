@@ -1,5 +1,6 @@
 package com.cheaptrip.demo.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,21 @@ public class BargainController {
 	public List<Bargain> listBargains(){
 		
 		return bargainServiceImpl.listBargains();
+	}
+	
+	@GetMapping("/chollos/maxprecio/{precio}")
+	public List<Bargain> listByMaxPrice(@PathVariable(name="precio") Long precio){
+		
+		List<Bargain> bargains = listBargains();
+		List<Bargain> bargainsWDesiredPrice = Arrays.asList() ;
+		
+		for (int i = 0; i < bargains.size(); i++) { 
+			if (bargains.get(i).getPrice() <= precio) { //if a bargain has the same or less price than the desired one 
+				bargainsWDesiredPrice.add(bargains.get(i)); //Is added to the List that will be returned 
+			}
+		}
+		
+		return bargainsWDesiredPrice;
 	}
 	
 	@PostMapping("/chollos")
