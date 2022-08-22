@@ -62,7 +62,7 @@ public class FlightController {
 		return flightUpdated;
 	}
 	
-	@DeleteMapping("/vuelos/cambiarestado/{id}")
+	@DeleteMapping("/vuelos/cambiar-estado/{id}")
 	public void changeStatusFlight(@PathVariable(name="id")Long id) {
 		
 		Flight flight = flightXID(id);		
