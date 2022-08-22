@@ -10,4 +10,7 @@ public interface IBargainDAO extends JpaRepository<Bargain, Long>{
 	
 	//List the Bargains by their prices
 	public List<Bargain> listByMaxPrice (double price); 
+	
+	//Change the bargain status
+	public Bargain changeStatus(Long id);
 }

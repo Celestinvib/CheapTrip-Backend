@@ -17,5 +17,7 @@ public interface IBargainService {
 				
 		public Bargain updateBargain(Bargain bargain); //Update bargain data "UPDATE"
 		
+		public Bargain changeStatus(Long id); //Change the bargain status "DELETE"
+		
 		public void deleteBargain(Long id);// Delete a bargain via id "DELETE"
 }

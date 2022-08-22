@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cheaptrip.demo.dto.Accommodation;
+import com.cheaptrip.demo.dto.Flight;
 import com.cheaptrip.demo.service.AccommodationServiceImpl;
 
 @RestController
@@ -64,7 +65,7 @@ public class AccommodationController {
 	}
 	
 	@GetMapping("/alojamientos/{id}")
-	public Accommodation accommodationtXID(@PathVariable(name="id") Long id) {
+	public Accommodation accommodationXID(@PathVariable(name="id") Long id) {
 		
 		Accommodation accommodation_xid= new Accommodation();
 		
@@ -92,6 +93,13 @@ public class AccommodationController {
 		accommodationUpdated = accommodationServiceImpl.updateAccommodation(accommodationSelected);
 				
 		return accommodationUpdated;
+	}
+	
+	@DeleteMapping("/alojamientos/cambiar-estado/{id}")
+	public void changeStatusFlight(@PathVariable(name="id")Long id) {
+		
+		Accommodation accommodation = accommodationXID(id);		
+		accommodation.setStatus(0);
 	}
 	
 	

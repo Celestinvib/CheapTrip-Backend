@@ -50,6 +50,12 @@ public class AccommodationServiceImpl implements IAccommodationService{
 		
 		return iAccommodationDAO.save(accommodation);
 	}
+	
+	@Override
+	public Accommodation changeStatus(Long id) {
+		
+		return iAccommodationDAO.changeStatus(id);
+	}
 
 	@Override
 	public void deleteAccommodation(Long id) {

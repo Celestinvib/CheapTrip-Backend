@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.cheaptrip.demo.dao.IBargainDAO;
 import com.cheaptrip.demo.dto.Bargain;
+import com.cheaptrip.demo.dto.Flight;
 
 @Service
 public class BargainServiceImpl implements IBargainService{
@@ -43,7 +44,13 @@ public class BargainServiceImpl implements IBargainService{
 		
 		return iBargainDAO.save(bargain);
 	}
-
+	
+	@Override
+	public Bargain changeStatus(Long id) {
+		
+		return iBargainDAO.changeStatus(id);
+	}
+	
 	@Override
 	public void deleteBargain(Long id) {
 		

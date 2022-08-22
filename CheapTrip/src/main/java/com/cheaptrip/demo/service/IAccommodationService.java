@@ -18,5 +18,7 @@ public interface IAccommodationService {
 					
 			public Accommodation updateAccommodation(Accommodation accommodation); //Update bargain data "UPDATE"
 			
+			public Accommodation changeStatus(Long id); //Change the accommodation status "DELETE"
+			
 			public void deleteAccommodation(Long id);// Delete a bargain via id "DELETE"
 }

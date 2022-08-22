@@ -16,4 +16,8 @@ public interface IAccommodationDAO extends JpaRepository<Accommodation, Long>{
 		//List the Accommodations by a rating and its upper values 
 		public List<Accommodation> filterByThisRatingOrUpper(double rating);
 		
+		
+		//Change the accommodation status
+		public Accommodation changeStatus(Long id);
+		
 }
