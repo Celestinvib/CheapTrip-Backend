@@ -28,7 +28,7 @@ create table Users(
   REFERENCES Roles(id)
 );
 
-create table Accomodations (
+create table Accommodations (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name varchar(100),
     address varchar(255),
@@ -64,23 +64,23 @@ create table Bargains (
 	expiration_date date NULL,
     outbound_flight int NULL,
     return_flight int,
-    accomodation_id int,
+    accommodation_id int,
     status bit(1),
     CONSTRAINT FK_FlightBargainOutbound FOREIGN KEY (outbound_flight)
 	REFERENCES Flights (id),
 	CONSTRAINT FK_FlightBargainReturn FOREIGN KEY (return_flight)
 	REFERENCES Flights (id),
-	CONSTRAINT FK_AccomodationBargain FOREIGN KEY (accomodation_id)
-	REFERENCES Accomodations (id)
+	CONSTRAINT FK_AccommodationBargain FOREIGN KEY (accommodation_id)
+	REFERENCES Accommodations (id)
 );
 
-create table Accomodations_Features (
+create table Accommodations_Features (
     id INT PRIMARY KEY AUTO_INCREMENT,
-	accomodation_id int,
+	accommodation_id int,
     feature_id int,
-	CONSTRAINT FK_AccomadationsFeatures FOREIGN KEY (accomodation_id)
-	REFERENCES Accomodations (id),
-	CONSTRAINT FK_FeaturesAccomadations FOREIGN KEY (feature_id) 
+	CONSTRAINT FK_AccommadationsFeatures FOREIGN KEY (accommodation_id)
+	REFERENCES Accommodations (id),
+	CONSTRAINT FK_FeaturesAccommadations FOREIGN KEY (feature_id) 
 	REFERENCES Features (id) ON DELETE CASCADE
 );
 
