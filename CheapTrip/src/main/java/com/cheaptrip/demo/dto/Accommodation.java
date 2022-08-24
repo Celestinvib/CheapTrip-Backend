@@ -44,12 +44,12 @@ public class Accommodation {
     @JoinColumn(name="city_id")
     private City city;
 	
-    @OneToMany
-    @JoinColumn(name="id")
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "accommodation")
     private List<Bargain> bargain;
 	
-    @OneToMany
-    @JoinColumn(name="id")
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "accommodation")
     private List<AccommodationsFeatures > accommodationsFeatures;
     
     

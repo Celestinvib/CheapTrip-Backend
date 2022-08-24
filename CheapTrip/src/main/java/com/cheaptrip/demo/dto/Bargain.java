@@ -49,8 +49,8 @@ public class Bargain {
 	
 	private int status;
 	
-	@OneToMany
-    @JoinColumn(name="id")
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bargain")
     private List<BargainsUsers> bargainsUsers;
 
 	/**Constructors */

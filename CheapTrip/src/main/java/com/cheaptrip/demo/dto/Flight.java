@@ -39,8 +39,8 @@ public class Flight {
 	
 	private int status;
 	
-	@OneToMany
-    @JoinColumn(name="id")
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "flight")
     private List<Bargain> bargain;
 	
 	/**Constructors */
