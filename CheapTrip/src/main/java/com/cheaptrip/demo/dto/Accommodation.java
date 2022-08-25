@@ -44,12 +44,12 @@ public class Accommodation {
     @JoinColumn(name="city_id")
     private City city;
 	
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Accommodation")
-    private List<Bargain> bargain;
+	@ManyToOne
+    @JoinColumn(name="bargain_id")
+    private Bargain bargain;
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Accommodation")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "accommodation")
     private List<AccommodationsFeatures > accommodationsFeatures;
     
     
@@ -71,7 +71,7 @@ public class Accommodation {
 	 * @param bargain
 	 */
 	public Accommodation(Long id, String name, String address, String category, double latitude, double longitude,
-			double rating, int status, City city, List<Bargain> bargain) {
+			double rating, int status, City city, Bargain bargain) {
 		this.id = id;
 		this.name = name;
 		this.address = address;
@@ -216,38 +216,38 @@ public class Accommodation {
 		this.category = category;
 	}
 
+
 	/**
 	 * @return the bargain
 	 */
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Bargain")
-	public List<Bargain> getBargain() {
+	public Bargain getBargain() {
 		return bargain;
 	}
 
 	/**
 	 * @param bargain the bargain to set
 	 */
-	public void setBargain(List<Bargain> bargain) {
+	public void setBargain(Bargain bargain) {
 		this.bargain = bargain;
 	}
 
 	/**
-	 * @return the accomodationsFeatures
+	 * @return the accommodationsFeatures
 	 */
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "AccommodationsFeatures")
-	public List<AccommodationsFeatures> getAccomodationsFeatures() {
+	public List<AccommodationsFeatures> getAccommodationsFeatures() {
 		return accommodationsFeatures;
 	}
 
 	/**
-	 * @param accomodationsFeatures the accomodationsFeatures to set
+	 * @param accommodationsFeatures the accommodationsFeatures to set
 	 */
-	public void setAccommodationsFeatures(List<AccommodationsFeatures> accomodationsFeatures) {
-		this.accommodationsFeatures = accomodationsFeatures;
+	public void setAccommodationsFeatures(List<AccommodationsFeatures> accommodationsFeatures) {
+		this.accommodationsFeatures = accommodationsFeatures;
 	}
 	
+
 
 	/**
 	 * Method printing data by console
@@ -256,6 +256,7 @@ public class Accommodation {
 	public String toString() {
 		return "Accomodation [id=" + id + ", name=" + name  + ", address=" + address  + ", category=" + category + ", latitude=" + latitude + ", longitude=" + longitude + ", rating=" + rating  + ", city=" + city+ ", status=" + status+ "]";
 	}
+
 	
 	
 	
