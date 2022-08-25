@@ -8,7 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -80,14 +79,14 @@ public class Feature {
 	 */
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "accommodationsFeatures")
-	public List<AccommodationFeatures> getAccommodationsFeatures() {
+	public List<AccommodationsFeatures> getAccommodationsFeatures() {
 		return accommodationsFeatures;
 	}
 
 	/**
 	 * @param accommodationsFeatures the accommodationsFeatures to set
 	 */
-	public void setAccommodationsFeatures(List<AccommodationFeatures> accommodationsFeatures) {
+	public void setAccommodationsFeatures(List<AccommodationsFeatures> accommodationsFeatures) {
 		this.accommodationsFeatures = accommodationsFeatures;
 	}
 
