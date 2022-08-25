@@ -41,11 +41,11 @@ public class Bargain {
 	
 	@ManyToOne
     @JoinColumn(name="outbound_flight")
-    private List<Flight > outbound_flight;
+    private Flight outbound_flight;
     
 	@ManyToOne
     @JoinColumn(name="return_flight")
-    private List<Flight > return_flight ;
+    private Flight return_flight ;
 	
 	private int status;
 	
@@ -72,7 +72,7 @@ public class Bargain {
 	 * @param status
 	 */
 	public Bargain(Long id, String title, String image, double price, String description, Date expiration_date,
-			Accommodation accomodation, List<Flight> outbound_flight, List<Flight> return_flight, int status) {
+			Accommodation accomodation, Flight outbound_flight, Flight return_flight, int status) {
 		this.id = id;
 		this.title = title;
 		this.image = image;
@@ -201,7 +201,7 @@ public class Bargain {
 	/**
 	 * @return the outbound_flight
 	 */
-	public List<Flight> getOutbound_flight() {
+	public Flight getOutbound_flight() {
 		return outbound_flight;
 	}
 
@@ -209,7 +209,7 @@ public class Bargain {
 	/**
 	 * @param outbound_flight the outbound_flight to set
 	 */
-	public void setOutbound_flight(List<Flight> outbound_flight) {
+	public void setOutbound_flight(Flight outbound_flight) {
 		this.outbound_flight = outbound_flight;
 	}
 
@@ -217,7 +217,7 @@ public class Bargain {
 	/**
 	 * @return the return_flight
 	 */
-	public List<Flight> getReturn_flight() {
+	public Flight getReturn_flight() {
 		return return_flight;
 	}
 
@@ -225,7 +225,7 @@ public class Bargain {
 	/**
 	 * @param return_flight the return_flight to set
 	 */
-	public void setReturn_flight(List<Flight> return_flight) {
+	public void setReturn_flight(Flight return_flight) {
 		this.return_flight = return_flight;
 	}
 

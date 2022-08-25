@@ -45,11 +45,11 @@ public class Accommodation {
     private City city;
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "accommodation")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Accommodation")
     private List<Bargain> bargain;
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "accommodation")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Accommodation")
     private List<AccommodationsFeatures > accommodationsFeatures;
     
     
@@ -236,7 +236,7 @@ public class Accommodation {
 	 * @return the accomodationsFeatures
 	 */
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "AccomodationsFeatures")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "AccommodationsFeatures")
 	public List<AccommodationsFeatures> getAccomodationsFeatures() {
 		return accommodationsFeatures;
 	}

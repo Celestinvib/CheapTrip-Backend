@@ -50,8 +50,8 @@ public class AccommodationsFeaturesController {
 		
 		accommodationsFeaturesSelected = accommodationsFeaturesServiceImpl.accommodationsFeaturesXID(id);
 		
-		accommodationsFeaturesSelected.setAccommodation_id(accommodation.getAccommodation_id());
-		accommodationsFeaturesSelected.setFeature_id(accommodation.getFeature_id());
+		accommodationsFeaturesSelected.setAccommodation(accommodation.getAccommodation());
+		accommodationsFeaturesSelected.setFeature(accommodation.getFeature());
 	
 		accommodationsFeaturesUpdated = accommodationsFeaturesServiceImpl.updateAccommodationsFeatures(accommodationsFeaturesSelected);
 				

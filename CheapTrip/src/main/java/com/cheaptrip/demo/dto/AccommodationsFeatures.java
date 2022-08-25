@@ -1,7 +1,5 @@
 package com.cheaptrip.demo.dto;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="accommodationsFeatures")
+@Table(name="accommodations_features")
 public class AccommodationsFeatures {
 	
 	/**Attributes */
@@ -20,51 +18,74 @@ public class AccommodationsFeatures {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//Find last value and increment from final id of db
 	private Long id;
 	
-	private int accommodation_id;
-	
-	private int feature_id;
+	@ManyToOne
+	@JoinColumn(name="accommodation_id")
+    private Accommodation accommodation;
 	
 	@ManyToOne
-	@JoinColumn(name="accommodationsFeatures")
-    private List<Bargain> accommodation;
-	
-	@ManyToOne
-	@JoinColumn(name="accommodationsFeatures")
-    private List<Bargain> feature;
+	@JoinColumn(name="feature_id")
+    private Feature feature;
 	
 	/**Constructors */
 	public AccommodationsFeatures() {
 		
 	}
-	
+
 	/**
-	 * @param id
-	 * @param accommodation_id
-	 * @param feature_id
+	 * @param accommodation
+	 * @param feature
 	 */
-	
-	public AccommodationsFeatures(Long id, int accommodation_id, int feature_id) {
+	public AccommodationsFeatures(Accommodation accommodation, Feature feature) {
+		this.accommodation = accommodation;
+		this.feature = feature;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
 		this.id = id;
-		this.setAccommodation_id(accommodation_id);
-		this.setFeature_id(feature_id);
 	}
 
-	public int getFeature_id() {
-		return feature_id;
+	/**
+	 * @return the accommodation
+	 */
+	public Accommodation getAccommodation() {
+		return accommodation;
 	}
 
-	public void setFeature_id(int feature_id) {
-		this.feature_id = feature_id;
+	/**
+	 * @param accommodation the accommodation to set
+	 */
+	public void setAccommodation(Accommodation accommodation) {
+		this.accommodation = accommodation;
 	}
 
-	public int getAccommodation_id() {
-		return accommodation_id;
+	/**
+	 * @return the feature
+	 */
+	public Feature getFeature() {
+		return feature;
 	}
 
-	public void setAccommodation_id(int accommodation_id) {
-		this.accommodation_id = accommodation_id;
+	/**
+	 * @param feature the feature to set
+	 */
+	public void setFeature(Feature feature) {
+		this.feature = feature;
 	}
+
 	
-	
+	@Override
+	public String toString() {
+		return "AccommodationsFeatures [id=" + id + ", accommodation=" + accommodation + ", feature=" + feature + "]";
+	}
 	
 }
