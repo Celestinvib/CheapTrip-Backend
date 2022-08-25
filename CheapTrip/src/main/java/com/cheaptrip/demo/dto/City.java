@@ -26,10 +26,10 @@ public class City {
 
 
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "City")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "city")
 	private List<Flight> flight;
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "City")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "city")
 	private List<Accommodation> accommodation;
 
 
