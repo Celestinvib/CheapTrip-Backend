@@ -11,9 +11,9 @@ public interface ICityService {
 
 	public City saveCity(City city);	//Save
 
-	public City cityByID(int id); 		//Read
+	public City cityByID(Long id); 		//Read
 
 	public City updateCity(City city);	//Update
 
-	public void deleteCity(int id);		//Delete
+	public void deleteCity(Long id);	//Delete
 }

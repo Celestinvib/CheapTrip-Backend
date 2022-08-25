@@ -11,9 +11,9 @@ public interface IFeatureService {
 
 	public Feature saveFeature(Feature feature);	//Save
 
-	public Feature featureByID(int id); 			//Read
+	public Feature featureByID(Long id); 			//Read
 
 	public Feature updateFeature(Feature feature);	//Update
 
-	public void deleteFeature(int id);				//Delete
+	public void deleteFeature(Long id);				//Delete
 }
