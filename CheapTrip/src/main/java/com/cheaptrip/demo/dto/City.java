@@ -8,7 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,11 +25,11 @@ public class City {
 	private String name;
 
 
-	@OneToMany
-	@JoinColumn(name="id")
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "City")
 	private List<Flight> flight;
-	@OneToMany
-	@JoinColumn(name="id")
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "City")
 	private List<Accommodation> accommodation;
 
 

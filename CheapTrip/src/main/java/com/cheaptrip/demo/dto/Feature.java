@@ -25,9 +25,9 @@ public class Feature {
 	@Column(name = "name")
 	private String name;
 
-	@OneToMany
-	@JoinColumn(name="id")
-	private List<AccommodationFeatures> accommodationsFeatures;
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Feature")
+	private List<AccommodationsFeatures> accommodationsFeatures;
 
 
 
