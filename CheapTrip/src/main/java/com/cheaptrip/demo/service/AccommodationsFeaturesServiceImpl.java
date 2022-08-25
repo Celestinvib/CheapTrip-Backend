@@ -9,9 +9,9 @@ import com.cheaptrip.demo.dao.IAccommodationsFeaturesDAO;
 import com.cheaptrip.demo.dto.AccommodationsFeatures;
 
 @Service
-public class AccommodationsFeaturesServiceImpl implements IAccommodationsFeaturesService{
+public class AccommodationsFeaturesServiceImpl implements IAccommodationsFeaturesService {
 
-	//We use the methods of the iAccommodationDAO interface, it is as if we were instantiating.
+	//We use the methods of the iAccommodationFeaturesDAO interface, it is as if we were instantiating.
 	@Autowired
 	IAccommodationsFeaturesDAO iAccommodationsFeaturesDAO;
 	
@@ -33,7 +33,6 @@ public class AccommodationsFeaturesServiceImpl implements IAccommodationsFeature
 		return iAccommodationsFeaturesDAO.findById(id).get();
 	}
 
-	@Override
 	public AccommodationsFeatures updateAccommodationsFeatures(AccommodationsFeatures accommodationFeatures) {
 		
 		return iAccommodationsFeaturesDAO.save(accommodationFeatures);
@@ -44,5 +43,6 @@ public class AccommodationsFeaturesServiceImpl implements IAccommodationsFeature
 		
 		iAccommodationsFeaturesDAO.deleteById(id);
 	}
+	
 	
 }

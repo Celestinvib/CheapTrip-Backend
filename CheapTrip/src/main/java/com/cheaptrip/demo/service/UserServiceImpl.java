@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.cheaptrip.demo.dao.IUserDAO;
 
 @Service
-public class UserServiceImpl implements UserDetailsService {
+public class UserServiceImpl implements IUserService {
 
 	private IUserDAO iUserDAO;
 

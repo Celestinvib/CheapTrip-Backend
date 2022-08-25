@@ -8,5 +8,4 @@ import com.cheaptrip.demo.dto.AccommodationsFeatures;
 public interface IAccommodationsFeaturesDAO extends JpaRepository<AccommodationsFeatures, Long>{
 
 	
-	
 }

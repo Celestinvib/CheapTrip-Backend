@@ -6,8 +6,12 @@ import com.cheaptrip.demo.dto.BargainsUsers;
 
 
 public interface IBargainsUsersDAO extends JpaRepository<BargainsUsers, Long>{
-
 	
-		
+	//Change the accommodation status
+	public BargainsUsers changeStatusBookmarked(Long id);
+	
+	//Change the accommodation status
+	public BargainsUsers changeStatusBook(Long id);
+	
 }
 

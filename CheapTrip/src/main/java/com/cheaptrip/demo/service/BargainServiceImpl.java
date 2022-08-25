@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.cheaptrip.demo.dao.IBargainDAO;
 import com.cheaptrip.demo.dto.Bargain;
-import com.cheaptrip.demo.dto.Flight;
 
 @Service
 public class BargainServiceImpl implements IBargainService{

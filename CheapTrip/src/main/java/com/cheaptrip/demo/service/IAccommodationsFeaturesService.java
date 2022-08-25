@@ -17,3 +17,4 @@ public interface IAccommodationsFeaturesService {
 	public void deleteAccommodationsFeatures(Long id);// Delete a bargain via id "DELETE"
 
 }
+
