@@ -26,8 +26,13 @@ public class City {
 
 
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "city")
-	private List<Flight> flight;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "origin")
+	private List<Flight> origin;
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "destination")
+	private List<Flight> destination;
+	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "city")
 	private List<Accommodation> accommodation;
@@ -81,21 +86,42 @@ public class City {
 	}
 
 
+
+
+
 	/**
-	 * @return the flight
+	 * @return the origin
 	 */
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Flight")
-	public List<Flight> getFlight() {
-		return flight;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "flight")
+	public List<Flight> getOrigin() {
+		return origin;
 	}
 
 
 	/**
-	 * @param flight the flight to set
+	 * @param origin the origin to set
 	 */
-	public void setFlight(List<Flight> flight) {
-		this.flight = flight;
+	public void setOrigin(List<Flight> origin) {
+		this.origin = origin;
+	}
+
+
+	/**
+	 * @return the destination
+	 */
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "flight")
+	public List<Flight> getDestination() {
+		return destination;
+	}
+
+
+	/**
+	 * @param destination the destination to set
+	 */
+	public void setDestination(List<Flight> destination) {
+		this.destination = destination;
 	}
 
 
