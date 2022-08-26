@@ -44,9 +44,9 @@ public class Accommodation {
     @JoinColumn(name="city_id")
     private City city;
 	
-	@ManyToOne
-    @JoinColumn(name="bargain_id")
-    private Bargain bargain;
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "accommodation")
+    private List<Bargain> bargain;
 	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "accommodation")
@@ -58,6 +58,7 @@ public class Accommodation {
 		
 	}
 	
+	
 	/**
 	 * @param id
 	 * @param name
@@ -68,10 +69,9 @@ public class Accommodation {
 	 * @param rating
 	 * @param status
 	 * @param city
-	 * @param bargain
 	 */
 	public Accommodation(Long id, String name, String address, String category, double latitude, double longitude,
-			double rating, int status, City city, Bargain bargain) {
+			double rating, int status, City city) {
 		this.id = id;
 		this.name = name;
 		this.address = address;
@@ -81,15 +81,12 @@ public class Accommodation {
 		this.rating = rating;
 		this.status = status;
 		this.city = city;
-		this.bargain = bargain;
 	}
-
-
 
 
 	/**Getters y Setters*/
 
-	
+
 	/**
 	 * @return the id
 	 */
@@ -217,19 +214,24 @@ public class Accommodation {
 	}
 
 
+
 	/**
 	 * @return the bargain
 	 */
-	public Bargain getBargain() {
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Bargain")
+	public List<Bargain> getBargain() {
 		return bargain;
 	}
+
 
 	/**
 	 * @param bargain the bargain to set
 	 */
-	public void setBargain(Bargain bargain) {
+	public void setBargain(List<Bargain> bargain) {
 		this.bargain = bargain;
 	}
+
 
 	/**
 	 * @return the accommodationsFeatures

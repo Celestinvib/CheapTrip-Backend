@@ -70,7 +70,7 @@ public class BargainController {
 		bargainSelected.setPrice(bargain.getPrice());
 		bargainSelected.setDescription(bargain.getDescription());
 		bargainSelected.setExpiration_date(bargain.getExpiration_date());
-		bargainSelected.setAccomodation(bargain.getAccomodation());
+		bargainSelected.setAccommodation(bargain.getAccommodation());
 		bargainSelected.setOutbound_flight(bargain.getOutbound_flight());
 		bargainSelected.setReturn_flight(bargain.getReturn_flight());
 	

@@ -37,7 +37,7 @@ public class Bargain {
 	
 	@ManyToOne
     @JoinColumn(name="accomodation_id")
-    private Accommodation accomodation;
+    private Accommodation accommodation;
 	
 	@ManyToOne
     @JoinColumn(name="outbound_flight")
@@ -72,14 +72,14 @@ public class Bargain {
 	 * @param status
 	 */
 	public Bargain(Long id, String title, String image, double price, String description, Date expiration_date,
-			Accommodation accomodation, Flight outbound_flight, Flight return_flight, int status) {
+			Accommodation accommodation, Flight outbound_flight, Flight return_flight, int status) {
 		this.id = id;
 		this.title = title;
 		this.image = image;
 		this.price = price;
 		this.description = description;
 		this.expiration_date = expiration_date;
-		this.accomodation = accomodation;
+		this.accommodation = accommodation;
 		this.outbound_flight = outbound_flight;
 		this.return_flight = return_flight;
 		this.status = status;
@@ -183,18 +183,18 @@ public class Bargain {
 
 
 	/**
-	 * @return the accomodation
+	 * @return the accommodation
 	 */
-	public Accommodation getAccomodation() {
-		return accomodation;
+	public Accommodation getAccommodation() {
+		return accommodation;
 	}
 
 
 	/**
-	 * @param accomodation the accomodation to set
+	 * @param accomodation the accommodation to set
 	 */
-	public void setAccomodation(Accommodation accomodation) {
-		this.accomodation = accomodation;
+	public void setAccommodation(Accommodation accommodation) {
+		this.accommodation = accommodation;
 	}
 
 
@@ -267,7 +267,7 @@ public class Bargain {
 	 */
 	@Override
 	public String toString() {
-		return "Bargain [id=" + id + ", title=" + title  + ", image=" + image  + ", price=" + price + ", description=" + description + ", expiration_date=" + expiration_date + ", accomodation=" + accomodation  + ", outbound_flight=" + outbound_flight+ ", return_flight=" + return_flight+ ", status=" + status+ "]";
+		return "Bargain [id=" + id + ", title=" + title  + ", image=" + image  + ", price=" + price + ", description=" + description + ", expiration_date=" + expiration_date + ", accomodation=" + accommodation  + ", outbound_flight=" + outbound_flight+ ", return_flight=" + return_flight+ ", status=" + status+ "]";
 	}
 
 	
