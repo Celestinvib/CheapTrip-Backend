@@ -14,10 +14,10 @@ public interface IAccommodationDAO extends JpaRepository<Accommodation, Long>{
 		public List<Accommodation> findByCategory(String category); 
 		
 		//List the Accommodations by a rating and its upper values 
-		public List<Accommodation> filterByThisRatingOrUpper(double rating);
+		public List<Accommodation> findByRating(double rating);
 		
 		
 		//Change the accommodation status
-		public Accommodation changeStatus(Long id);
+		public Accommodation findByStatus(Long id);
 		
 }

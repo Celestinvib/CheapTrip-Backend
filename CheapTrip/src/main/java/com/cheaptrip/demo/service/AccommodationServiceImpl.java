@@ -30,7 +30,7 @@ public class AccommodationServiceImpl implements IAccommodationService{
 	@Override
 	public List<Accommodation> filterByThisRatingOrUpper(double rating) {
 		
-		return iAccommodationDAO.filterByThisRatingOrUpper(rating);	
+		return iAccommodationDAO.findByRating(rating);	
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class AccommodationServiceImpl implements IAccommodationService{
 	@Override
 	public Accommodation changeStatus(Long id) {
 		
-		return iAccommodationDAO.changeStatus(id);
+		return iAccommodationDAO.findByStatus(id);
 	}
 
 	@Override

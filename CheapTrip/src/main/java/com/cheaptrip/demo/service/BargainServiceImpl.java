@@ -23,7 +23,7 @@ public class BargainServiceImpl implements IBargainService{
 	@Override
 	public List<Bargain> listByMaxPrice(double price) {
 		
-		return iBargainDAO.listByMaxPrice(price);	
+		return iBargainDAO.findByPrice(price);	
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class BargainServiceImpl implements IBargainService{
 	@Override
 	public Bargain changeStatus(Long id) {
 		
-		return iBargainDAO.changeStatus(id);
+		return iBargainDAO.findByStatus(id);
 	}
 	
 	@Override

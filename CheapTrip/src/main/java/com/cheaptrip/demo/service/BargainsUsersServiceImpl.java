@@ -38,17 +38,6 @@ public class BargainsUsersServiceImpl implements IBargainsUsersService {
 		return iBargainsUsersDAO.findById(id).get();
 	}
 	
-	@Override
-	public BargainsUsers changeStatusBookmarked(Long id) {
-		
-		return iBargainsUsersDAO.changeStatusBookmarked(id);
-	}
-
-	@Override
-	public BargainsUsers changeStatusBook(Long id) {
-		
-		return iBargainsUsersDAO.changeStatusBook(id);
-	}	
 	
 	@Override
 	public void deleteBargainsUsers(Long id) {

@@ -7,5 +7,5 @@ import com.cheaptrip.demo.dto.Flight;
 public interface IFlightDAO extends JpaRepository<Flight, Long>{
 	
 	//Change the flight status
-	public Flight changeStatus(Long id);
+	public Flight findByStatus(Long id);
 }

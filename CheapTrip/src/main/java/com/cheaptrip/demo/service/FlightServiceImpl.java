@@ -41,7 +41,7 @@ public class FlightServiceImpl implements IFlightService{
 	@Override
 	public Flight changeStatus(Long id) {
 		
-		return iFlightDAO.changeStatus(id);
+		return iFlightDAO.findByStatus(id);
 	}
 	
 	@Override

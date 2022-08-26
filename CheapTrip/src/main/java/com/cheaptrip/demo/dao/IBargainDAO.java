@@ -9,8 +9,8 @@ import com.cheaptrip.demo.dto.Bargain;
 public interface IBargainDAO extends JpaRepository<Bargain, Long>{
 	
 	//List the Bargains by their prices
-	public List<Bargain> listByMaxPrice (double price); 
+	public List<Bargain> findByPrice (double price); 
 	
 	//Change the bargain status
-	public Bargain changeStatus(Long id);
+	public Bargain findByStatus(Long id);
 }

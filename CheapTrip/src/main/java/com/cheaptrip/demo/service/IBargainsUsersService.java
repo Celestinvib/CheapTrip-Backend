@@ -13,11 +13,7 @@ public interface IBargainsUsersService {
 	public BargainsUsers bargainsUsersXID(Long id);
 	
 	public BargainsUsers updatebargainsUsers(BargainsUsers bargainsUsers);
-	
-	public BargainsUsers changeStatusBookmarked(Long id);
-	
-	public BargainsUsers changeStatusBook(Long id);
-	
+		
 	public void deleteBargainsUsers(Long id);
 	
 }
