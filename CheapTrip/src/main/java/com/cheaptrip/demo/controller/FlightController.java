@@ -66,7 +66,12 @@ public class FlightController {
 	public void changeStatusFlight(@PathVariable(name="id")Long id) {
 		
 		Flight flight = flightXID(id);		
-		flight.setStatus(0);
+		
+		if(flight.getStatus() == 0) { 
+			flight.setStatus(1);
+		}else {
+			flight.setStatus(0);	
+		}
 	}	
 	
 	@DeleteMapping("/vuelos/{id}")

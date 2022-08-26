@@ -29,17 +29,7 @@ public class AccommodationController {
 	
 	@GetMapping("/alojamientos/categorias/{categoria}")
 	public List<Accommodation> findByCategory(@PathVariable(name="categoria") String category){
-		
-		List<Accommodation> accommodations = listAccommodations();
-		List<Accommodation>accommodationsWCategory = Arrays.asList() ;
-		
-		for (int i = 0; i < accommodations.size(); i++) { 
-			if (accommodations.get(i).getCategory().equals(category)) { //if a accommodation has the same category that the desired one 
-				accommodationsWCategory.add(accommodations.get(i)); //Is added to the List that will be returned 
-			}
-		}
-		
-		return accommodationsWCategory;
+		return accommodationServiceImpl.findByCategory(category);
 	}
 	
 	@GetMapping("/alojamientos/valoracion-minima/{valoracion}")
@@ -98,7 +88,12 @@ public class AccommodationController {
 	public void changeStatusAccommodation(@PathVariable(name="id")Long id) {
 		
 		Accommodation accommodation = accommodationXID(id);		
-		accommodation.setStatus(0);
+		
+		if(accommodation.getStatus() == 0) { 
+			accommodation.setStatus(1);
+		}else {
+			accommodation.setStatus(0);	
+		}
 	}
 	
 	

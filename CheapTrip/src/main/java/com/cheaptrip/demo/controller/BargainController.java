@@ -83,7 +83,12 @@ public class BargainController {
 	public void changeStatusBargain(@PathVariable(name="id")Long id) {
 		
 		Bargain bargain = bargainXID(id);		
-		bargain.setStatus(0);
+		
+		if(bargain.getStatus() == 0) { 
+			bargain.setStatus(1);
+		}else {
+			bargain.setStatus(0);	
+		}
 	}	
 	
 	
