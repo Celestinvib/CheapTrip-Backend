@@ -57,7 +57,7 @@ public class BargainController {
 		return bargain_xid;
 	}
 	
-	@PutMapping("/alojamientos/{id}")
+	@PutMapping("/chollos/{id}")
 	public Bargain updateBargain(@PathVariable(name="id")Long id,@RequestBody Bargain bargain) {
 		
 		Bargain bargainSelected= new Bargain();
