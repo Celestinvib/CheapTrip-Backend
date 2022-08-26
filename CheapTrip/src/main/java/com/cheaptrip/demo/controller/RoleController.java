@@ -57,10 +57,6 @@ public class RoleController {
 		return roleUpdated;
 	}
 	
-	@DeleteMapping("/roles/{id}")
-	public void changeStatusRole(@PathVariable(name="id")Long id) {
-		roleServiceImpl.deleteRole(id);
-	}	
 	
 	@DeleteMapping("/roles/{id}")
 	public void deleteRole(@PathVariable(name="id")Long id) {

@@ -57,10 +57,6 @@ public class CityController {
 		return cityUpdated;
 	}
 	
-	@DeleteMapping("/ciudades/{id}")
-	public void changeStatusCity(@PathVariable(name="id")Long id) {
-		cityServiceImpl.deleteCity(id);
-	}	
 	
 	@DeleteMapping("/ciudades/{id}")
 	public void deleteCity(@PathVariable(name="id")Long id) {

@@ -57,10 +57,6 @@ public class FeatureController {
 		return featureUpdated;
 	}
 	
-	@DeleteMapping("/features/{id}")
-	public void changeStatusFeature(@PathVariable(name="id")Long id) {
-		featureServiceImpl.deleteFeature(id);
-	}	
 	
 	@DeleteMapping("/features/{id}")
 	public void deleteFeature(@PathVariable(name="id")Long id) {
