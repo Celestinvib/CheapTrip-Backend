@@ -17,7 +17,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name="roles")
 public class Role {
 
-	//Attributes
+	/**
+	 * Attributes
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -30,7 +32,9 @@ public class Role {
 
 	
 	
-	//Constructors
+	/**
+	 * Constructors
+	 */
 	
 	public Role() {
 	}
@@ -44,7 +48,9 @@ public class Role {
 	}
 
 
-	//GETTERS and SETTERS
+	/**
+	 * GETTERS and SETTERS
+	 */
 	
 	/**
 	 * @return the id
@@ -96,7 +102,9 @@ public class Role {
 	}
 
 
-	//ToString
+	/**
+	 * ToString
+	 */
 	
 	@Override
 	public String toString() {

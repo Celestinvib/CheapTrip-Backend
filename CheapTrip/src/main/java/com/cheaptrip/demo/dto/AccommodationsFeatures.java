@@ -82,7 +82,9 @@ public class AccommodationsFeatures {
 		this.feature = feature;
 	}
 
-	
+	/**
+	 * ToString
+	 */
 	@Override
 	public String toString() {
 		return "AccommodationsFeatures [id=" + id + ", accommodation=" + accommodation + ", feature=" + feature + "]";

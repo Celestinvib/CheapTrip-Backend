@@ -17,7 +17,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name="cities")
 public class City {
 
-	//Attributes
+	/**
+	 * Attributes
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -38,13 +40,17 @@ public class City {
 	private List<Accommodation> accommodation;
 
 
-	//Constructors
+	/**
+	 * Constructors
+	 */
 
 	public City() {
 	}
 
 
-	//GETTERS and SETTERS
+	/**
+	 * GETTERS and SETTERS
+	 */
 
 	/**
 	 * @param name
@@ -143,7 +149,9 @@ public class City {
 	}
 
 
-	//ToString
+	/**
+	 * ToString
+	 */
 
 	@Override
 	public String toString() {

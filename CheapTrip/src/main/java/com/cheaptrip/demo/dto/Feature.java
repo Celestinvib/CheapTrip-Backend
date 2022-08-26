@@ -17,7 +17,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name="features")
 public class Feature {
 
-	//Attributes
+	/**
+	 * Attributes
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -30,7 +32,9 @@ public class Feature {
 
 
 
-	//Constructors
+	/**
+	 * Constructors
+	 */
 
 	public Feature() {
 	}
@@ -44,7 +48,9 @@ public class Feature {
 	}
 
 
-	//GETTERS and SETTERS
+	/**
+	 * GETTERS and SETTERS
+	 */
 
 	/**
 	 * @return the id
@@ -91,7 +97,9 @@ public class Feature {
 	}
 
 
-	//ToString
+	/**
+	 * ToString
+	 */
 
 	@Override
 	public String toString() {
