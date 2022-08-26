@@ -80,7 +80,7 @@ public class BargainController {
 	}
 	
 	@DeleteMapping("/chollos/cambiar-estado/{id}")
-	public void changeStatusFlight(@PathVariable(name="id")Long id) {
+	public void changeStatusBargain(@PathVariable(name="id")Long id) {
 		
 		Bargain bargain = bargainXID(id);		
 		bargain.setStatus(0);
