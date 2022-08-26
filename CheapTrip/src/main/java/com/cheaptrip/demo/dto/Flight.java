@@ -40,8 +40,12 @@ public class Flight {
 	private int status;
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "flight")
-    private List<Bargain> bargain;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "outbound_flight")
+    private List<Bargain> bargain_outbound_flight;
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "return_flight")
+    private List<Bargain> bargain_return_flight;
 	
 	/**Constructors */
 
@@ -154,19 +158,35 @@ public class Flight {
 	
 	
 	/**
-	 * @return the bargain
+	 * @return the bargain_outbound_flight
 	 */
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Bargain")
-	public List<Bargain> getBargain() {
-		return bargain;
+	public List<Bargain> getBargain_outbound_flight() {
+		return bargain_outbound_flight;
 	}
 
 	/**
-	 * @param bargain the bargain to set
+	 * @param bargain_outbound_flight the bargain_outbound_flight to set
 	 */
-	public void setBargain(List<Bargain> bargain) {
-		this.bargain = bargain;
+	public void setBargain_outbound_flight(List<Bargain> bargain_outbound_flight) {
+		this.bargain_outbound_flight = bargain_outbound_flight;
+	}
+
+	/**
+	 * @return the bargain_return_flight
+	 */
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Bargain")
+	public List<Bargain> getBargain_return_flight() {
+		return bargain_return_flight;
+	}
+
+	/**
+	 * @param bargain_return_flight the bargain_return_flight to set
+	 */
+	public void setBargain_return_flight(List<Bargain> bargain_return_flight) {
+		this.bargain_return_flight = bargain_return_flight;
 	}
 
 	/**

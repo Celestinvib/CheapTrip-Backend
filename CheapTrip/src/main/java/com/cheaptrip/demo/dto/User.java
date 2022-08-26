@@ -28,11 +28,11 @@ public class User {
 	private int role;
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "accommodation")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Role> Role;
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "accommodation")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<BargainsUsers > bargainsUsers;
 	
 	/**Constructors */
