@@ -95,7 +95,7 @@ public class AccommodationController {
 	}
 	
 	@DeleteMapping("/alojamientos/cambiar-estado/{id}")
-	public void changeStatusFlight(@PathVariable(name="id")Long id) {
+	public void changeStatusAccommodation(@PathVariable(name="id")Long id) {
 		
 		Accommodation accommodation = accommodationXID(id);		
 		accommodation.setStatus(0);
