@@ -25,7 +25,7 @@ public class Feature {
 	private String name;
 
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Feature")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "feature")
 	private List<AccommodationsFeatures> accommodationsFeatures;
 
 
