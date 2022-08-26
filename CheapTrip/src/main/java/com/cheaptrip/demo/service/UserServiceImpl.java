@@ -21,10 +21,11 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		com.cheaptrip.demo.dto.User user = iUserDAO.findByName(username);
-		if (user == null) {
-			throw new UsernameNotFoundException(username);
-		}
-		return new User(user.getUsername(), user.getPassword(), emptyList());
+//		if (user == null) {
+//			throw new UsernameNotFoundException(username);
+//		}
+//		return new User(user.getUsername(), user.getPassword(), emptyList());
+		return null;
 	}
 	
 }
