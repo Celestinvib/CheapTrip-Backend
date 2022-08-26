@@ -125,7 +125,15 @@ public class BargainsUsers {
 		this.bookmarked = bookmarked;
 	}
 
-
 	
-		
+	/**
+	 * ToString
+	 */
+	
+	@Override
+	public String toString() {
+		return "BargainsUsers [id=" + id + ", booked=" + booked + ", bookmarked=" + bookmarked + ", user=" + user
+				+ ", bargain=" + bargain + "]";
+	}
+
 }

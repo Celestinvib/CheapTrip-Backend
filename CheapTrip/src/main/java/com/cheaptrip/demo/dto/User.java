@@ -216,6 +216,18 @@ public class User {
 		this.bargainsUsers = bargainsUsers;
 	}
 
+	
+	/**
+	 * ToString
+	 */
+	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", surnames=" + surnames + ", email=" + email + ", password="
+				+ password + ", phone_number=" + phone_number + ", birth_date=" + birth_date + ", creation_date="
+				+ creation_date + ", role=" + role + "]";
+	}
+
 
 	
 	
