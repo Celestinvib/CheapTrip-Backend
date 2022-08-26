@@ -36,7 +36,7 @@ public class Bargain {
 	private Date expiration_date;
 	
 	@ManyToOne
-    @JoinColumn(name="accomodation_id")
+    @JoinColumn(name="accommodation_id")
     private Accommodation accommodation;
 	
 	@ManyToOne
