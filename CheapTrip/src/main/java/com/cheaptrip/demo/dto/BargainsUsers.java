@@ -18,9 +18,9 @@ public class BargainsUsers {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//Find last value and increment from final id of db
 	private Long id;
 	
-	private int statusbook;
+	private int booked;
 	
-	private int statusbookmarked;
+	private int bookmarked;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
@@ -30,21 +30,30 @@ public class BargainsUsers {
 	@JoinColumn(name="bargain_id")
     private Bargain bargain;
 	
+	
 	/**Constructors */
 	public BargainsUsers() {
 		
 	}
-
+	
 	/**
+	 * @param id
+	 * @param booked
+	 * @param bookmarked
 	 * @param user
 	 * @param bargain
 	 */
-	public BargainsUsers(User user, Bargain bargain, int statusbook, int statusbookmarked) {
+	public BargainsUsers(Long id, int booked, int bookmarked, User user, Bargain bargain) {
+		this.id = id;
+		this.booked = booked;
+		this.bookmarked = bookmarked;
 		this.user = user;
 		this.bargain = bargain;
-		this.statusbook = statusbook;
-		this.statusbookmarked = statusbookmarked;
 	}
+
+
+	/**Getters y Setters*/
+
 
 	/**
 	 * @return the id
@@ -89,32 +98,34 @@ public class BargainsUsers {
 	}
 
 	/**
-	 * @return the statusbook
+	 * @return the booked
 	 */
-	public int getStatusbook() {
-		return statusbook;
+	public int getBooked() {
+		return booked;
 	}
 
 	/**
-	 * @param statusbook the statusbook to set
+	 * @param booked the booked to set
 	 */
-	public void setStatusbook(int statusbook) {
-		this.statusbook = statusbook;
+	public void setBooked(int booked) {
+		this.booked = booked;
 	}
 
 	/**
-	 * @return the statusbookmarked
+	 * @return the bookmarked
 	 */
-	public int getStatusbookmarked() {
-		return statusbookmarked;
+	public int getBookmarked() {
+		return bookmarked;
 	}
 
 	/**
-	 * @param statusbookmarked the statusbookmarked to set
+	 * @param bookmarked the bookmarked to set
 	 */
-	public void setStatusbookmarked(int statusbookmarked) {
-		this.statusbookmarked = statusbookmarked;
+	public void setBookmarked(int bookmarked) {
+		this.bookmarked = bookmarked;
 	}
+
+
 	
 		
 }

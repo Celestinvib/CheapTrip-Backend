@@ -60,14 +60,14 @@ public class BargainsUsersController {
 	public void changeStatusBook(@PathVariable(name="id")Long id) {
 		
 		BargainsUsers bargainsUsers = bargainsUsersXID(id);		
-		bargainsUsers.setStatusbook(0);
+		bargainsUsers.setBooked(0);
 	}
 	
 	@DeleteMapping("/bargainusersbookmarked/cambiar-estado/{id}")
 	public void changeStatusBookmarked(@PathVariable(name="id")Long id) {
 		
 		BargainsUsers bargainsUsers = bargainsUsersXID(id);		
-		bargainsUsers.setStatusbookmarked(0);
+		bargainsUsers.setBookmarked(0);
 	}
 	
 	@DeleteMapping("/bargainusers/{id}")
