@@ -22,11 +22,11 @@ insert into Users (name, surnames, email, password, phone_number, birth_date, cr
     ('Pedro', 'De la Rosa Lobato', 'laF1yAlonso@gmail.com', 'fernandoelnano02&', '456789123', '2001-01-23', '2021-04-22', 1, 21);
 
 insert into Accommodations (name, address, category, latitude, longitude, rating, city_id, status) values
-	('Pestana CR7', 'Rua do Comercio', '4', '38.70919', '-9.13596', '8.8', 1, 1),
-    ('Chiado Luxury', 'Rua das Flores', '5', '38.70876', '-9.14357', '10', 1, 1),
-    ('Uppelink', 'Sint-Michielsplein Strasse', '2', '51.05393', '3.71986', '8.3', 11, 1),
-    ('Fat Margaret Hotel', 'Pohja pst', '1', '59.44421', '24.74892', '8.6', 21, 1),
-    ('Hestia Hotel', 'Uus-Sadama', '3', '59.44283', '24.76767', '8.6', 21, 1);
+	('Pestana CR7', 'Rua do Comercio', 'Hotel', '38.70919', '-9.13596', '8.8', 1, 1),
+    ('Chiado Luxury', 'Rua das Flores', 'Hotel', '38.70876', '-9.14357', '10', 1, 1),
+    ('Uppelink', 'Sint-Michielsplein Strasse', 'Hostal', '51.05393', '3.71986', '8.3', 11, 1),
+    ('Fat Margaret Hotel', 'Pohja pst', 'Hostal', '59.44421', '24.74892', '8.6', 21, 1),
+    ('Hestia Hotel', 'Uus-Sadama', 'Hotel', '59.44283', '24.76767', '8.6', 21, 1);
     
 insert into Flights (origin, destination, departure_date, arrival_date, status) values
 	(31, 1, '2022-10-10', '2022-10-14', 1),
