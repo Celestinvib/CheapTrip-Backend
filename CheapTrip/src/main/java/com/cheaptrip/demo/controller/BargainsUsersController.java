@@ -17,19 +17,19 @@ public class BargainsUsersController {
 	@Autowired
 	BargainsUsersServiceImpl bargainsUsersServiceImpl;
 	
-	@GetMapping("/bargainusersbookmarked")
+	@GetMapping("/chollosfavoritos")
 	public List<BargainsUsers> listBargainsUsersbookmarked() {
 		
 		return bargainsUsersServiceImpl.listBargainsUsersbookmarked();
 	}
 	
-	@GetMapping("/bargainusersbook")
+	@GetMapping("/chollosreservados")
 	public List<BargainsUsers> listBargainsUsersbook() {
 		
 		return bargainsUsersServiceImpl.listBargainsUsersbook();
 	}
 	
-	@GetMapping("/bargainusers/{id}")
+	@GetMapping("/chollos-usuario/{id}")
 	public BargainsUsers bargainsUsersXID(@PathVariable(name="id") Long id) {
 		
 		BargainsUsers bargainsUsers_xid= new BargainsUsers();
@@ -39,7 +39,7 @@ public class BargainsUsersController {
 		return bargainsUsers_xid;
 	}
 	
-	@PutMapping("/bargainusers/{id}")
+	@PutMapping("/chollos-usuario/{id}")
 	public BargainsUsers updatebargainsUsers(@PathVariable(name="id")Long id,@RequestBody BargainsUsers bargainsUsers) {
 		
 		BargainsUsers bargainusersSelected= new BargainsUsers();
@@ -56,21 +56,21 @@ public class BargainsUsersController {
 		return bargainusersUpdated;
 	}
 	
-	@DeleteMapping("/bargainusersbook/cambiar-estado/{id}")
+	@DeleteMapping("/cholloreservado/cambiar-estado/{id}")
 	public void changeStatusBook(@PathVariable(name="id")Long id) {
 		
 		BargainsUsers bargainsUsers = bargainsUsersXID(id);		
 		bargainsUsers.setBooked(0);
 	}
 	
-	@DeleteMapping("/bargainusersbookmarked/cambiar-estado/{id}")
+	@DeleteMapping("/chollofavorito/cambiar-estado/{id}")
 	public void changeStatusBookmarked(@PathVariable(name="id")Long id) {
 		
 		BargainsUsers bargainsUsers = bargainsUsersXID(id);		
 		bargainsUsers.setBookmarked(0);
 	}
 	
-	@DeleteMapping("/bargainusers/{id}")
+	@DeleteMapping("/chollos-usuario/{id}")
 	public void deleteBargainsUsers(@PathVariable(name="id")Long id) {
 		bargainsUsersServiceImpl.deleteBargainsUsers(id);
 	}	

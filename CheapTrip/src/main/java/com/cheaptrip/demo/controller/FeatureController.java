@@ -20,19 +20,19 @@ public class FeatureController {
 	@Autowired
 	FeatureServiceImpl featureServiceImpl;
 	
-	@GetMapping("/features")
+	@GetMapping("/rasgos")
 	public List<Feature> listFeatures(){
 		
 		return featureServiceImpl.listFeatures();
 	}
 	
-	@PostMapping("/features")
+	@PostMapping("/rasgos")
 	public Feature saveFeature(@RequestBody Feature feature) {
 		
 		return featureServiceImpl.saveFeature(feature);
 	}
 	
-	@GetMapping("/features/{id}")
+	@GetMapping("/rasgos/{id}")
 	public Feature featureByID(@PathVariable(name="id") Long id) {
 		
 		Feature feature_byid= new Feature();
@@ -42,7 +42,7 @@ public class FeatureController {
 		return feature_byid;
 	}
 	
-	@PutMapping("/features/{id}")
+	@PutMapping("/rasgos/{id}")
 	public Feature updateFeature(@PathVariable(name="id")Long id,@RequestBody Feature feature) {
 		
 		Feature featureSelected= new Feature();
@@ -58,7 +58,7 @@ public class FeatureController {
 	}
 	
 	
-	@DeleteMapping("/features/{id}")
+	@DeleteMapping("/rasgos/{id}")
 	public void deleteFeature(@PathVariable(name="id")Long id) {
 		featureServiceImpl.deleteFeature(id);
 	}	
