@@ -1,5 +1,6 @@
 package com.cheaptrip.demo.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,14 +37,14 @@ public class AccommodationController {
 	public List<Accommodation> filterByThisRatingOrUpper(@PathVariable(name="valoracion") double rating){
 		
 		List<Accommodation> accommodations = listAccommodations();
-		List<Accommodation>accommodationsWRating = Arrays.asList() ;
+		List<Accommodation>accommodationsWRating = new ArrayList<>();
 		
 		for (int i = 0; i < accommodations.size(); i++) { 
 			if (accommodations.get(i).getRating() >= rating) { //if a accommodation has the same rating or more that the desired one 
 				accommodationsWRating.add(accommodations.get(i)); //Is added to the List that will be returned 
 			}
 		}
-		
+				
 		return accommodationsWRating;
 	}
 	
