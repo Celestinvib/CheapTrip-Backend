@@ -6,6 +6,7 @@ Alojamiento
 GET       /alojamientos
 GET       /alojamientos/categorias/{categoria}
 GET       /alojamientos/valoracion-minima/{valoracion}
+GET       /alojamientos/ciudad/{nombre}  
 GET       /alojamientos/{id}
 POST      /alojamientos
 PUT       /alojamientos/{id}
@@ -44,11 +45,26 @@ PUT       /roles/{id}
 DELETE    /roles/{id}
 
 
-Característica
-GET       /caracteristicas
-GET       /caracteristicas/{id}
-POST      /caracteristicas
-PUT       /caracteristicas/{id}
-DELETE    /caracteristicas/{id}
+Rasgos
+GET       /rasgos
+GET       /rasgos/{id}
+POST      /rasgos
+PUT       /rasgos/{id}
+DELETE    /rasgos/{id}
 
+Rasgos-Alojamientos
+GET       /rasgos-alojamientos
+GET       /rasgos-alojamientos/{id}
+POST      /rasgos-alojamientos
+PUT       /rasgos-alojamientos/{id}
+DELETE    /rasgos-alojamientos/{id}
+
+Chollo-Usuario
+GET       /chollosfavoritos
+GET       /chollosreservados
+GET       /chollos-usuario/{id}
+PUT       /chollos-usuario/{id}
+DELETE    /cholloreservado/cambiar-estado/{id}
+DELETE    /chollofavorito/cambiar-estado/{id}
+DELETE    /chollos-usuario/{id}
 ```
