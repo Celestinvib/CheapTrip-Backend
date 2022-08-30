@@ -20,19 +20,19 @@ public class AccommodationsFeaturesController {
 	@Autowired
 	AccommodationsFeaturesServiceImpl accommodationsFeaturesServiceImpl;
 	
-	@GetMapping("/alojamientosfeatures")
+	@GetMapping("/rasgos-alojamientos")
 	public List<AccommodationsFeatures> listAccommodationsFeatures(){
 		
 		return accommodationsFeaturesServiceImpl.listAccommodationsFeatures();
 	}
 	
-	@PostMapping("/alojamientosfeatures")
+	@PostMapping("/rasgos-alojamientos")
 	public AccommodationsFeatures saveAccommodationFeatures(@RequestBody AccommodationsFeatures accommodationFeatures) {
 		
 		return accommodationsFeaturesServiceImpl.saveAccommodationsFeatures(accommodationFeatures);
 	}
 	
-	@GetMapping("/alojamientosfeatures/{id}")
+	@GetMapping("/rasgos-alojamientos/{id}")
 	public AccommodationsFeatures accommodationFeaturesXID(@PathVariable(name="id") Long id) {
 		
 		AccommodationsFeatures accommodationsFeatures_xid= new AccommodationsFeatures();
@@ -42,7 +42,7 @@ public class AccommodationsFeaturesController {
 		return accommodationsFeatures_xid;
 	}
 	
-	@PutMapping("/alojamientosfeatures/{id}")
+	@PutMapping("/rasgos-alojamientos/{id}")
 	public AccommodationsFeatures updateAccommodation(@PathVariable(name="id")Long id,@RequestBody AccommodationsFeatures accommodation) {
 		
 		AccommodationsFeatures accommodationsFeaturesSelected= new AccommodationsFeatures();
@@ -59,7 +59,7 @@ public class AccommodationsFeaturesController {
 	}
 	
 	
-	@DeleteMapping("/alojamientosfeatures/{id}")
+	@DeleteMapping("/rasgos-alojamientos/{id}")
 	public void deleteAccommodationFeatures(@PathVariable(name="id")Long id) {
 		accommodationsFeaturesServiceImpl.deleteAccommodationsFeatures(id);
 	}	
