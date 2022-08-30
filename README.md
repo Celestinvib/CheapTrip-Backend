@@ -45,7 +45,7 @@ PUT       /roles/{id}
 DELETE    /roles/{id}
 
 
-Rasgos
+Rasgo
 GET       /rasgos
 GET       /rasgos/{id}
 POST      /rasgos
