@@ -6,7 +6,7 @@ Alojamiento
 GET       /alojamientos
 GET       /alojamientos/categorias/{categoria}
 GET       /alojamientos/valoracion-minima/{valoracion}
-GET       /alojamientos/ciudad/{nombre}  
+GET       /alojamientos/ciudades/{ciudad}  
 GET       /alojamientos/{id}
 POST      /alojamientos
 PUT       /alojamientos/{id}
