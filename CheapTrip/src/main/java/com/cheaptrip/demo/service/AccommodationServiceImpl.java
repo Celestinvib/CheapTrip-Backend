@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.cheaptrip.demo.dao.IAccommodationDAO;
 import com.cheaptrip.demo.dto.Accommodation;
+import com.cheaptrip.demo.dto.City;
 
 @Service
 public class AccommodationServiceImpl implements IAccommodationService{
@@ -33,6 +34,12 @@ public class AccommodationServiceImpl implements IAccommodationService{
 		return iAccommodationDAO.findByRating(rating);	
 	}
 
+	@Override
+	public List<Accommodation> findByCity(String cityName) {
+
+		return iAccommodationDAO.findByCity(cityName);
+	}
+	
 	@Override
 	public Accommodation saveAccommodation(Accommodation accommodation) {
 		
@@ -62,5 +69,7 @@ public class AccommodationServiceImpl implements IAccommodationService{
 		
 		iAccommodationDAO.deleteById(id);
 	}
+
+	
 	
 }

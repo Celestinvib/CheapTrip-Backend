@@ -3,6 +3,7 @@ package com.cheaptrip.demo.service;
 import java.util.List;
 
 import com.cheaptrip.demo.dto.Accommodation;
+import com.cheaptrip.demo.dto.City;
 
 public interface IAccommodationService {
 			
@@ -11,7 +12,9 @@ public interface IAccommodationService {
 			public List<Accommodation> findByCategory(String category); //List the Accommodations by its categories by category
 
 			public List<Accommodation> filterByThisRatingOrUpper(double rating); //List the Accommodations by a rating and its upper values 
-
+			
+			public List<Accommodation> findByCity(String cityName); //List the Accommodations by a city
+			
 			public Accommodation saveAccommodation(Accommodation accommodation);//Save a new bargain "CREATE"
 			
 			public Accommodation accommodationXID(Long id); //Read bargain from a part "READ"

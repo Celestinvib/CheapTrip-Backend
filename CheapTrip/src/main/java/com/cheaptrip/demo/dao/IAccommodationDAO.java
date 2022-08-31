@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cheaptrip.demo.dto.Accommodation;
+import com.cheaptrip.demo.dto.City;
 
 
 
@@ -16,6 +17,8 @@ public interface IAccommodationDAO extends JpaRepository<Accommodation, Long>{
 		//List the Accommodations by a rating and its upper values 
 		public List<Accommodation> findByRating(double rating);
 		
+		//List the Accommodations by a city
+		public List<Accommodation> findByCity(String cityName);
 		
 		//Change the accommodation status
 		public Accommodation findByStatus(Long id);
