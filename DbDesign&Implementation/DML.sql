@@ -13,7 +13,7 @@ create table Cities(
   name varchar(100)
 );
 
-create table Users(
+create table Accounts(
   id int PRIMARY KEY AUTO_INCREMENT,
   name varchar(100),
   surnames varchar(150),
@@ -84,7 +84,7 @@ create table Accommodations_Features (
 	REFERENCES Features (id) ON DELETE CASCADE
 );
 
-create table Bargains_Users (
+create table Bargains_Accounts (
     id INT PRIMARY KEY AUTO_INCREMENT,
 	bargain_id int,
     user_id int,
