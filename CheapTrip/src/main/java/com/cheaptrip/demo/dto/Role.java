@@ -28,7 +28,7 @@ public class Role {
 
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
-	private List<User> user;
+	private List<Account> user;
 
 	
 	
@@ -89,7 +89,7 @@ public class Role {
 	 */
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "User")
-	public List<User> getUser() {
+	public List<Account> getUser() {
 		return user;
 	}
 
@@ -97,7 +97,7 @@ public class Role {
 	/**
 	 * @param user the user to set
 	 */
-	public void setUser(List<User> user) {
+	public void setUser(List<Account> user) {
 		this.user = user;
 	}
 

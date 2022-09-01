@@ -9,8 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="bargains_users")
-public class BargainsUsers {
+@Table(name="bargains_accounts")
+public class BargainsAccounts {
 	
 	/**Attributes */
 	
@@ -23,8 +23,8 @@ public class BargainsUsers {
 	private int bookmarked;
 	
 	@ManyToOne
-	@JoinColumn(name="user_id")
-    private User user;
+	@JoinColumn(name="account_id")
+    private Account account;
 	
 	@ManyToOne
 	@JoinColumn(name="bargain_id")
@@ -32,7 +32,7 @@ public class BargainsUsers {
 	
 	
 	/**Constructors */
-	public BargainsUsers() {
+	public BargainsAccounts() {
 		
 	}
 	
@@ -40,14 +40,14 @@ public class BargainsUsers {
 	 * @param id
 	 * @param booked
 	 * @param bookmarked
-	 * @param user
+	 * @param account
 	 * @param bargain
 	 */
-	public BargainsUsers(Long id, int booked, int bookmarked, User user, Bargain bargain) {
+	public BargainsAccounts(Long id, int booked, int bookmarked, Account account, Bargain bargain) {
 		this.id = id;
 		this.booked = booked;
 		this.bookmarked = bookmarked;
-		this.user = user;
+		this.account = account;
 		this.bargain = bargain;
 	}
 
@@ -69,18 +69,19 @@ public class BargainsUsers {
 		this.id = id;
 	}
 
+
 	/**
-	 * @return the user
+	 * @return the account
 	 */
-	public User getUser() {
-		return user;
+	public Account getAccount() {
+		return account;
 	}
 
 	/**
-	 * @param user the user to set
+	 * @param account the account to set
 	 */
-	public void setUser(User user) {
-		this.user = user;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	/**
@@ -132,7 +133,7 @@ public class BargainsUsers {
 	
 	@Override
 	public String toString() {
-		return "BargainsUsers [id=" + id + ", booked=" + booked + ", bookmarked=" + bookmarked + ", user=" + user
+		return "BargainsUsers [id=" + id + ", booked=" + booked + ", bookmarked=" + bookmarked + ", account=" + account
 				+ ", bargain=" + bargain + "]";
 	}
 

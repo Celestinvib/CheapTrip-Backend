@@ -6,34 +6,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cheaptrip.demo.dao.IBargainsUsersDAO;
-import com.cheaptrip.demo.dto.BargainsUsers;
+import com.cheaptrip.demo.dto.BargainsAccounts;
 
 @Service
-public class BargainsUsersServiceImpl implements IBargainsUsersService {
+public class BargainsAccountsServiceImpl implements IBargainsAccountsService {
 	
 	@Autowired
 	IBargainsUsersDAO iBargainsUsersDAO;
 	
 	@Override
-	public List<BargainsUsers> listBargainsUsersbookmarked() {
+	public List<BargainsAccounts> listBargainsUsersbookmarked() {
 		
 		return iBargainsUsersDAO.findAll();
 	}
 	
 	@Override
-	public List<BargainsUsers> listBargainsUsersbook() {
+	public List<BargainsAccounts> listBargainsUsersbook() {
 		
 		return iBargainsUsersDAO.findAll();
 	}
 
 	@Override
-	public BargainsUsers updatebargainsUsers(BargainsUsers bargainsUsers) {
+	public BargainsAccounts updatebargainsUsers(BargainsAccounts bargainsUsers) {
 		
 		return iBargainsUsersDAO.save(bargainsUsers);
 	}
 	
 	@Override
-	public BargainsUsers bargainsUsersXID(Long id) {
+	public BargainsAccounts bargainsUsersXID(Long id) {
 		
 		return iBargainsUsersDAO.findById(id).get();
 	}

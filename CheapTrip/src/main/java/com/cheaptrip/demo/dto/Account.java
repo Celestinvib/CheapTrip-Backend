@@ -17,8 +17,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-@Table(name="users")
-public class User {
+@Table(name="accounts")
+public class Account {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,12 +36,12 @@ public class User {
     private Role role;
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private List<BargainsUsers > bargainsUsers;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
+    private List<BargainsAccounts > bargainsAccounts;
 	
 	/**Constructors */
 	
-	public User() {
+	public Account() {
 		
 	}
 	
@@ -57,7 +57,7 @@ public class User {
 	 * @param creation_date
 	 * @param role
 	 */
-	public User(long id, String name, String surnames, String email, String password, String phone_number,
+	public Account(long id, String name, String surnames, String email, String password, String phone_number,
 			Date birth_date, Date creation_date, Role role) {
 		this.id = id;
 		this.name = name;
@@ -201,22 +201,22 @@ public class User {
 
 
 	/**
-	 * @return the bargainsUsers
+	 * @return the bargainsAccounts
 	 */
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "BargainsUsers")
-
-	public List<BargainsUsers> getBargainsUsers() {
-		return bargainsUsers;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "BargainsAccounts")
+	public List<BargainsAccounts> getBargainsAccounts() {
+		return bargainsAccounts;
 	}
+
 
 	/**
-	 * @param bargainsUsers the bargainsUsers to set
+	 * @param bargainsAccounts the bargainsAccounts to set
 	 */
-	public void setBargainsUsers(List<BargainsUsers> bargainsUsers) {
-		this.bargainsUsers = bargainsUsers;
+	public void setBargainsAccounts(List<BargainsAccounts> bargainsAccounts) {
+		this.bargainsAccounts = bargainsAccounts;
 	}
 
-	
+
 	/**
 	 * ToString
 	 */
@@ -227,6 +227,9 @@ public class User {
 				+ password + ", phone_number=" + phone_number + ", birth_date=" + birth_date + ", creation_date="
 				+ creation_date + ", role=" + role + "]";
 	}
+
+
+
 
 
 	

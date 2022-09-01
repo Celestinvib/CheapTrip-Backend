@@ -9,30 +9,30 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.cheaptrip.demo.dto.BargainsUsers;
-import com.cheaptrip.demo.service.BargainsUsersServiceImpl;
+import com.cheaptrip.demo.dto.BargainsAccounts;
+import com.cheaptrip.demo.service.BargainsAccountsServiceImpl;
 
-public class BargainsUsersController {
+public class BargainsAccountsController {
 	
 	@Autowired
-	BargainsUsersServiceImpl bargainsUsersServiceImpl;
+	BargainsAccountsServiceImpl bargainsUsersServiceImpl;
 	
 	@GetMapping("/chollosfavoritos")
-	public List<BargainsUsers> listBargainsUsersbookmarked() {
+	public List<BargainsAccounts> listBargainsUsersbookmarked() {
 		
 		return bargainsUsersServiceImpl.listBargainsUsersbookmarked();
 	}
 	
 	@GetMapping("/chollosreservados")
-	public List<BargainsUsers> listBargainsUsersbook() {
+	public List<BargainsAccounts> listBargainsUsersbook() {
 		
 		return bargainsUsersServiceImpl.listBargainsUsersbook();
 	}
 	
 	@GetMapping("/chollos-usuario/{id}")
-	public BargainsUsers bargainsUsersXID(@PathVariable(name="id") Long id) {
+	public BargainsAccounts bargainsUsersXID(@PathVariable(name="id") Long id) {
 		
-		BargainsUsers bargainsUsers_xid= new BargainsUsers();
+		BargainsAccounts bargainsUsers_xid= new BargainsAccounts();
 		
 		bargainsUsers_xid= bargainsUsersServiceImpl.bargainsUsersXID(id);
 				
@@ -40,14 +40,14 @@ public class BargainsUsersController {
 	}
 	
 	@PutMapping("/chollos-usuario/{id}")
-	public BargainsUsers updatebargainsUsers(@PathVariable(name="id")Long id,@RequestBody BargainsUsers bargainsUsers) {
+	public BargainsAccounts updatebargainsUsers(@PathVariable(name="id")Long id,@RequestBody BargainsAccounts bargainsUsers) {
 		
-		BargainsUsers bargainusersSelected= new BargainsUsers();
-		BargainsUsers bargainusersUpdated = new BargainsUsers();
+		BargainsAccounts bargainusersSelected= new BargainsAccounts();
+		BargainsAccounts bargainusersUpdated = new BargainsAccounts();
 		
 		bargainusersSelected = bargainsUsersServiceImpl.bargainsUsersXID(id);
 		
-		bargainusersSelected.setUser(bargainsUsers.getUser());
+		bargainusersSelected.setAccount(bargainsUsers.getAccount());
 		bargainusersSelected.setBargain(bargainsUsers.getBargain());
 
 	
@@ -59,14 +59,14 @@ public class BargainsUsersController {
 	@DeleteMapping("/cholloreservado/cambiar-estado/{id}")
 	public void changeStatusBook(@PathVariable(name="id")Long id) {
 		
-		BargainsUsers bargainsUsers = bargainsUsersXID(id);		
+		BargainsAccounts bargainsUsers = bargainsUsersXID(id);		
 		bargainsUsers.setBooked(0);
 	}
 	
 	@DeleteMapping("/chollofavorito/cambiar-estado/{id}")
 	public void changeStatusBookmarked(@PathVariable(name="id")Long id) {
 		
-		BargainsUsers bargainsUsers = bargainsUsersXID(id);		
+		BargainsAccounts bargainsUsers = bargainsUsersXID(id);		
 		bargainsUsers.setBookmarked(0);
 	}
 	

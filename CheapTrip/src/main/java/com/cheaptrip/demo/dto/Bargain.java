@@ -51,7 +51,7 @@ public class Bargain {
 	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bargain")
-    private List<BargainsUsers> bargainsUsers;
+    private List<BargainsAccounts> bargainsAccounts;
 
 	/**Constructors */
 	
@@ -247,20 +247,21 @@ public class Bargain {
 
 	
 	/**
-	 * @return the bargainsUsers
+	 * @return the bargainsAccounts
 	 */
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "BargainsUsers")
-	public List<BargainsUsers> getBargainsUsers() {
-		return bargainsUsers;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "BargainsAccounts")
+	public List<BargainsAccounts> getBargainsAccounts() {
+		return bargainsAccounts;
 	}
 
 	/**
-	 * @param bargainsUsers the bargainsUsers to set
+	 * @param bargainsAccounts the bargainsAccounts to set
 	 */
-	public void setBargainsUsers(List<BargainsUsers> bargainsUsers) {
-		this.bargainsUsers = bargainsUsers;
+	public void setBargainsAccounts(List<BargainsAccounts> bargainsAccounts) {
+		this.bargainsAccounts = bargainsAccounts;
 	}
+
 	
 	/**
 	 * Method printing data by console
@@ -269,6 +270,7 @@ public class Bargain {
 	public String toString() {
 		return "Bargain [id=" + id + ", title=" + title  + ", image=" + image  + ", price=" + price + ", description=" + description + ", expiration_date=" + expiration_date + ", accomodation=" + accommodation  + ", outbound_flight=" + outbound_flight+ ", return_flight=" + return_flight+ ", status=" + status+ "]";
 	}
+
 
 	
 	

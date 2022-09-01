@@ -7,20 +7,20 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.cheaptrip.demo.dao.IUserDAO;
+import com.cheaptrip.demo.dao.IAccountDAO;
 
 @Service
-public class UserServiceImpl implements IUserService {
+public class AccountServiceImpl implements IAccountService {
 
-	private IUserDAO iUserDAO;
+	private IAccountDAO iUserDAO;
 
-	public UserServiceImpl(IUserDAO iUserDAO) {
+	public AccountServiceImpl(IAccountDAO iUserDAO) {
 		this.iUserDAO = iUserDAO;
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		com.cheaptrip.demo.dto.User user = iUserDAO.findByName(username);
+		com.cheaptrip.demo.dto.Account user = iUserDAO.findByName(username);
 //		if (user == null) {
 //			throw new UsernameNotFoundException(username);
 //		}

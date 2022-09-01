@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cheaptrip.demo.dao.IUserDAO;
-import com.cheaptrip.demo.dto.User;
+import com.cheaptrip.demo.dao.IAccountDAO;
+import com.cheaptrip.demo.dto.Account;
 
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
-public class UserController {
+public class AccountController {
 
-	private IUserDAO iUserDAO;
+	private IAccountDAO iUserDAO;
 
 //	private BCryptPasswordEncoder bCryptPasswordEncoder;
 //
