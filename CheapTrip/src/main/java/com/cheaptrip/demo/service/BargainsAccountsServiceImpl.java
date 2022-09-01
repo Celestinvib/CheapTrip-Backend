@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cheaptrip.demo.dao.IBargainsUsersDAO;
+import com.cheaptrip.demo.dao.IBargainsAccountsDAO;
 import com.cheaptrip.demo.dto.BargainsAccounts;
 
 @Service
 public class BargainsAccountsServiceImpl implements IBargainsAccountsService {
 	
 	@Autowired
-	IBargainsUsersDAO iBargainsUsersDAO;
+	IBargainsAccountsDAO iBargainsUsersDAO;
 	
 	@Override
 	public List<BargainsAccounts> listBargainsUsersbookmarked() {
