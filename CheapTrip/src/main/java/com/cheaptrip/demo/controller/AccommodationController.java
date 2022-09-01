@@ -1,7 +1,6 @@
 package com.cheaptrip.demo.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +45,21 @@ public class AccommodationController {
 		}
 				
 		return accommodationsWRating;
+	}
+	
+	@GetMapping("/alojamientos/ciudades/{ciudad}")
+	public List<Accommodation> findByCity(@PathVariable(name="ciudad") String cityName){
+		
+		List<Accommodation> accommodations = listAccommodations();
+		List<Accommodation> accommodationsCity = new ArrayList<>();
+		
+		for(int i = 0; i < accommodations.size(); i++) {
+			if(accommodations.get(i).getCity().getName().equals(cityName)) {
+				accommodationsCity.add(accommodations.get(i));
+			}
+		}
+		
+		return accommodationsCity;
 	}
 	
 	@PostMapping("/alojamientos")
