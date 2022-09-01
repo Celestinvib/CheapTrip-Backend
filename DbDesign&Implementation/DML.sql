@@ -87,11 +87,11 @@ create table Accommodations_Features (
 create table Bargains_Accounts (
     id INT PRIMARY KEY AUTO_INCREMENT,
 	bargain_id int,
-    user_id int,
+    account_id int,
     booked bit(1),
     bookmarked bit(1),
 	CONSTRAINT FK_UsersBargains FOREIGN KEY (bargain_id)
 	REFERENCES Bargains (id),
-	CONSTRAINT FK_BargainsUsers FOREIGN KEY (user_id)
-	REFERENCES Users (id)
+	CONSTRAINT FK_BargainsAccounts FOREIGN KEY (account_id)
+	REFERENCES Accounts (id)
 );
