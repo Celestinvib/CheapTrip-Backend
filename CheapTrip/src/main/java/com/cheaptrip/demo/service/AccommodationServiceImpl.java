@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.cheaptrip.demo.dao.IAccommodationDAO;
 import com.cheaptrip.demo.dto.Accommodation;
-import com.cheaptrip.demo.dto.City;
 
 @Service
 public class AccommodationServiceImpl implements IAccommodationService{

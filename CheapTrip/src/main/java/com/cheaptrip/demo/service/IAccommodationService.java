@@ -3,7 +3,6 @@ package com.cheaptrip.demo.service;
 import java.util.List;
 
 import com.cheaptrip.demo.dto.Accommodation;
-import com.cheaptrip.demo.dto.City;
 
 public interface IAccommodationService {
 			
