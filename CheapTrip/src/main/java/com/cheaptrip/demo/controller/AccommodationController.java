@@ -54,7 +54,7 @@ public class AccommodationController {
 		List<Accommodation> accommodationsCity = new ArrayList<>();
 		
 		for(int i = 0; i < accommodations.size(); i++) {
-			if(accommodations.get(i).getCity().getName().equals(cityName)) {
+			if(accommodations.get(i).getCity().getName().toLowerCase().equals(cityName.toLowerCase())) {
 				accommodationsCity.add(accommodations.get(i));
 			}
 		}
