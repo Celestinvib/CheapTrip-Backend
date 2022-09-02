@@ -1,5 +1,6 @@
 package com.cheaptrip.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,19 +9,31 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.cheaptrip.demo.dto.BargainsAccounts;
 import com.cheaptrip.demo.service.BargainsAccountsServiceImpl;
 
+@RestController
 public class BargainsAccountsController {
 	
 	@Autowired
 	BargainsAccountsServiceImpl bargainsAccountsServiceImpl;
 	
-	@GetMapping("/chollos-favoritos")
-	public List<BargainsAccounts> listBargainsAccountsBookmarked() {
+	
+	@GetMapping("/chollos-favoritos/{id_cuenta}")
+	public List<BargainsAccounts> findBookmarkedByAccount(@PathVariable(name="id_cuenta") Long accountId){
 		
-		return bargainsAccountsServiceImpl.listBargainsAccountsBookmarked();
+		List<BargainsAccounts> bargainsAccounts = bargainsAccountsServiceImpl.listBargainsAccounts();
+		List<BargainsAccounts> bargainsAccountsSelected = new ArrayList<>();
+		
+		for(int i = 0; i < bargainsAccounts.size(); i++) {
+			if((bargainsAccounts.get(i).getAccount().getId() == accountId) && (bargainsAccounts.get(i).getBookmarked() == 1)) {
+				bargainsAccountsSelected.add(bargainsAccounts.get(i));
+			}
+		}
+		
+		return bargainsAccountsSelected;
 	}
 	
 	@GetMapping("/reservas")
