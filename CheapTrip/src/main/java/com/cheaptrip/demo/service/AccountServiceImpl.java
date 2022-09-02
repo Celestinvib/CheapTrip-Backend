@@ -4,13 +4,15 @@ import static java.util.Collections.emptyList;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.cheaptrip.demo.dao.IAccountDAO;
+import com.cheaptrip.demo.dto.Account;
 
 @Service
-public class AccountServiceImpl implements IAccountService {
+public class AccountServiceImpl implements UserDetailsService {
 
 	private IAccountDAO iUserDAO;
 
@@ -19,13 +21,12 @@ public class AccountServiceImpl implements IAccountService {
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		com.cheaptrip.demo.dto.Account user = iUserDAO.findByName(username);
-//		if (user == null) {
-//			throw new UsernameNotFoundException(username);
-//		}
-//		return new User(user.getUsername(), user.getPassword(), emptyList());
-		return null;
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		Account user = iUserDAO.findByEmail(email);
+		if (user == null) {
+			throw new UsernameNotFoundException(email);
+		}
+		return new User(user.getEmail(), user.getPassword(), emptyList());
 	}
 	
 }

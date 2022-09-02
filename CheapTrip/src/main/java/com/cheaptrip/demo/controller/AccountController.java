@@ -23,45 +23,44 @@ public class AccountController {
 
 	private IAccountDAO iUserDAO;
 
-//	private BCryptPasswordEncoder bCryptPasswordEncoder;
-//
-//	public UserController(IUserDAO iUserDAO, BCryptPasswordEncoder bCryptPasswordEncoder) {
-//		this.iUserDAO = iUserDAO;
-//		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-//	}
-//	
-//	
-//	@GetMapping("/response-entity-builder-with-http-headers")
-//	public ResponseEntity<String> usingResponseEntityBuilderAndHttpHeaders() {
-//	    HttpHeaders responseHeaders = new HttpHeaders();
-//	    responseHeaders.set("Baeldung-Example-Header", 
-//	      "Value-ResponseEntityBuilderWithHttpHeaders");
-//
-//	    return ResponseEntity.ok()
-//	      .headers(responseHeaders)
-//	      .body("Response with header using ResponseEntity");
-//	}
-//	
-//	@PostMapping("/users/")
-//	public User saveUsuario(@RequestBody User user) {
-////		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-//		iUserDAO.save(user);
-//		return user;
-//	}
-//
-//	@GetMapping("/users/")
-//	public List<User> getAllUsuarios() {
-//		return iUserDAO.findAll();
-//	}
-//
-//	@GetMapping("/users/{username}")
-//	public User getUsuario(@PathVariable String name) {
-//		return iUserDAO.findByName(name);
-//	}
-//	
-//	@DeleteMapping("/users/{id}")
-//	public String eliminarUser(@PathVariable(name="id")long id) {
-//		iUserDAO.deleteById(id);
-//		return "User deleted.";
-//	}
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+	public AccountController(IAccountDAO iUserDAO, BCryptPasswordEncoder bCryptPasswordEncoder) {
+		this.iUserDAO = iUserDAO;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+	}
+	
+	@GetMapping("/response-entity-builder-with-http-headers")
+	public ResponseEntity<String> usingResponseEntityBuilderAndHttpHeaders() {
+	    HttpHeaders responseHeaders = new HttpHeaders();
+	    responseHeaders.set("Baeldung-Example-Header", 
+	      "Value-ResponseEntityBuilderWithHttpHeaders");
+
+	    return ResponseEntity.ok()
+	      .headers(responseHeaders)
+	      .body("Response with header using ResponseEntity");
+	}
+	
+	@PostMapping("/cuentas/")
+	public Account saveUser(@RequestBody Account user) {
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		iUserDAO.save(user);
+		return user;
+	}
+
+	@GetMapping("/cuentas/")
+	public List<Account> getAllUser() {
+		return iUserDAO.findAll();
+	}
+
+	@GetMapping("/cuentas/{mail}")
+	public Account getUser(@PathVariable String email) {
+		return iUserDAO.findByEmail(email);
+	}
+	
+	@DeleteMapping("/cuentas/{id}")
+	public String deleteUser(@PathVariable(name="id")long id) {
+		iUserDAO.deleteById(id);
+		return "User deleted.";
+	}
 }
