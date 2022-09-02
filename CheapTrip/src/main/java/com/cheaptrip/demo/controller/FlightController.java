@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cheaptrip.demo.dto.Bargain;
 import com.cheaptrip.demo.dto.Flight;
 import com.cheaptrip.demo.service.FlightServiceImpl;
 

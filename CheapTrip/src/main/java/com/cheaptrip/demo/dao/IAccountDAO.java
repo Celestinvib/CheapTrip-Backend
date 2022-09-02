@@ -7,7 +7,6 @@ import com.cheaptrip.demo.dto.Account;
 
 public interface IAccountDAO extends JpaRepository<Account, Long>{
 
-	Account findByName(String username);
+	Account findByEmail(String email);
 		
 }
-
