@@ -15,32 +15,32 @@ public class BargainsAccountsServiceImpl implements IBargainsAccountsService {
 	IBargainsAccountsDAO iBargainsUsersDAO;
 	
 	@Override
-	public List<BargainsAccounts> listBargainsUsersbookmarked() {
+	public List<BargainsAccounts> listBargainsAccountsBookmarked() {
 		
 		return iBargainsUsersDAO.findAll();
 	}
 	
 	@Override
-	public List<BargainsAccounts> listBargainsUsersbook() {
+	public List<BargainsAccounts> listBargainsAccountsBooked() {
 		
 		return iBargainsUsersDAO.findAll();
 	}
 
 	@Override
-	public BargainsAccounts updatebargainsUsers(BargainsAccounts bargainsUsers) {
+	public BargainsAccounts updateBargainsAccounts(BargainsAccounts bargainsUsers) {
 		
 		return iBargainsUsersDAO.save(bargainsUsers);
 	}
 	
 	@Override
-	public BargainsAccounts bargainsUsersXID(Long id) {
+	public BargainsAccounts bargainsAccountsXID(Long id) {
 		
 		return iBargainsUsersDAO.findById(id).get();
 	}
 	
 	
 	@Override
-	public void deleteBargainsUsers(Long id) {
+	public void deleteBargainsAccounts(Long id) {
 		
 		iBargainsUsersDAO.deleteById(id);
 	}
