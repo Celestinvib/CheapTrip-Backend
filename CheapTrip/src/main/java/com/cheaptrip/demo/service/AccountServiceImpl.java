@@ -14,19 +14,27 @@ import com.cheaptrip.demo.dto.Account;
 @Service
 public class AccountServiceImpl implements UserDetailsService {
 
-	private IAccountDAO iUserDAO;
+	private IAccountDAO iAccountDAO;
 
-	public AccountServiceImpl(IAccountDAO iUserDAO) {
-		this.iUserDAO = iUserDAO;
+	public AccountServiceImpl(IAccountDAO iAccountDAO) {
+		this.iAccountDAO = iAccountDAO;
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		Account user = iUserDAO.findByEmail(email);
+		Account user = iAccountDAO.findByEmail(email);
 		if (user == null) {
 			throw new UsernameNotFoundException(email);
 		}
 		return new User(user.getEmail(), user.getPassword(), emptyList());
+	}
+
+	public Account accountByID(Long id) {
+		return iAccountDAO.findById(id).get();
+	}
+
+	public Account updateAccount(Account account) {
+		return iAccountDAO.save(account);
 	}
 	
 }
