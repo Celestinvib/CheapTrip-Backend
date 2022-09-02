@@ -7,13 +7,13 @@ import com.cheaptrip.demo.dto.Role;
 public interface IRoleService {
 	
 	//CRUD
-	public List<Role> listRoles(); 		//List
+	public List<Role> listRoles(); 		
 
-	public Role saveRole(Role role);	//Save
+	public Role saveRole(Role role);	
 
-	public Role roleByID(Long id); 		//Read
+	public Role roleByID(Long id); 		
 
-	public Role updateRole(Role role);	//Update
+	public Role updateRole(Role role);	
 
-	public void deleteRole(Long id);	//Delete
+	public void deleteRole(Long id);	
 }

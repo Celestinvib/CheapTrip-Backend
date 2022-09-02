@@ -6,7 +6,16 @@ import com.cheaptrip.demo.dto.Accommodation;
 
 public interface IAccommodationService {
 			
-			public List<Accommodation> listAccommodations(); //List All 
+			//CRUD
+			public List<Accommodation> listAccommodations();
+				
+			public Accommodation saveAccommodation(Accommodation accommodation);
+			
+			public Accommodation accommodationXID(Long id);
+					
+			public Accommodation updateAccommodation(Accommodation accommodation); 
+				
+			public void deleteAccommodation(Long id);
 			
 			public List<Accommodation> findByCategory(String category); //List the Accommodations by its categories by category
 
@@ -14,13 +23,6 @@ public interface IAccommodationService {
 			
 			public List<Accommodation> findByCity(String cityName); //List the Accommodations by a city
 			
-			public Accommodation saveAccommodation(Accommodation accommodation);//Save a new bargain "CREATE"
-			
-			public Accommodation accommodationXID(Long id); //Read bargain from a part "READ"
-					
-			public Accommodation updateAccommodation(Accommodation accommodation); //Update bargain data "UPDATE"
-			
-			public Accommodation changeStatus(Long id); //Change the accommodation status "DELETE"
-			
-			public void deleteAccommodation(Long id);// Delete a bargain via id "DELETE"
+			public Accommodation changeStatus(Long id); //Change the accommodation status "logic delete"
+
 }

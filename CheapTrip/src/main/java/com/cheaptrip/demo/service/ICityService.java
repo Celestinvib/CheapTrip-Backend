@@ -7,13 +7,13 @@ import com.cheaptrip.demo.dto.City;
 public interface ICityService {
 	
 	//CRUD
-	public List<City> listCities(); 	//List
+	public List<City> listCities(); 	
 
-	public City saveCity(City city);	//Save
+	public City saveCity(City city);	
 
-	public City cityByID(Long id); 		//Read
+	public City cityByID(Long id); 		
+	
+	public City updateCity(City city);	
 
-	public City updateCity(City city);	//Update
-
-	public void deleteCity(Long id);	//Delete
+	public void deleteCity(Long id);	
 }

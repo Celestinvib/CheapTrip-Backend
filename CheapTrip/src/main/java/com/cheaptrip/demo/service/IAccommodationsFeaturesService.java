@@ -6,15 +6,17 @@ import com.cheaptrip.demo.dto.AccommodationsFeatures;
 
 public interface IAccommodationsFeaturesService {
 	
-	public List<AccommodationsFeatures> listAccommodationsFeatures(); //List All 
+	
+	//CRUD
+	public List<AccommodationsFeatures> listAccommodationsFeatures(); 
 
-	public AccommodationsFeatures saveAccommodationsFeatures(AccommodationsFeatures accommodationFeatures);//Save a new bargain "CREATE"
+	public AccommodationsFeatures saveAccommodationsFeatures(AccommodationsFeatures accommodationFeatures);
 	
-	public AccommodationsFeatures accommodationsFeaturesXID(Long id); //Read bargain from a part "READ"
+	public AccommodationsFeatures accommodationsFeaturesXID(Long id);
 			
-	public AccommodationsFeatures updateAccommodationsFeatures(AccommodationsFeatures accommodationFeatures); //Update bargain data "UPDATE"
+	public AccommodationsFeatures updateAccommodationsFeatures(AccommodationsFeatures accommodationFeatures);
 	
-	public void deleteAccommodationsFeatures(Long id);// Delete a bargain via id "DELETE"
+	public void deleteAccommodationsFeatures(Long id);
 
 }
 

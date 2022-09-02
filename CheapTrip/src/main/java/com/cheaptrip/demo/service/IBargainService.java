@@ -7,17 +7,18 @@ import com.cheaptrip.demo.dto.Bargain;
 
 public interface IBargainService {
 		
-		public List<Bargain> listBargains(); //List All 
-		
-		public List<Bargain> listByMaxPrice(double price); //List All the bargains that have the price passed by parameter or a lower price
-		
-		public Bargain saveBargain(Bargain bargain);//Save a new bargain "CREATE"
-		
-		public Bargain bargainXID(Long id); //Read bargain from a part "READ"
+		//CRUD
+		public List<Bargain> listBargains(); 
 				
-		public Bargain updateBargain(Bargain bargain); //Update bargain data "UPDATE"
+		public Bargain saveBargain(Bargain bargain);
 		
-		public Bargain changeStatus(Long id); //Change the bargain status "DELETE"
+		public Bargain bargainXID(Long id); 
+				
+		public Bargain updateBargain(Bargain bargain); 
 		
-		public void deleteBargain(Long id);// Delete a bargain via id "DELETE"
+		public void deleteBargain(Long id);
+		
+		public List<Bargain> listByMaxPrice(double price);  // List all the bargains by a setted max price
+		
+		public Bargain changeStatus(Long id); //Change the bargain status "Logic delete"
 }

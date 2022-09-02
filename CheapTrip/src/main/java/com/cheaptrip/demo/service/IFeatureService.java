@@ -7,13 +7,13 @@ import com.cheaptrip.demo.dto.Feature;
 public interface IFeatureService {
 	
 	//CRUD
-	public List<Feature> listFeatures(); 			//List
+	public List<Feature> listFeatures(); 			
 
-	public Feature saveFeature(Feature feature);	//Save
+	public Feature saveFeature(Feature feature);	
 
-	public Feature featureByID(Long id); 			//Read
+	public Feature featureByID(Long id); 			
 
-	public Feature updateFeature(Feature feature);	//Update
+	public Feature updateFeature(Feature feature);	
 
-	public void deleteFeature(Long id);				//Delete
+	public void deleteFeature(Long id);				
 }

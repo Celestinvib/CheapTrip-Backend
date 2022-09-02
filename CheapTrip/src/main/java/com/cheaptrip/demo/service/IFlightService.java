@@ -5,16 +5,17 @@ import java.util.List;
 import com.cheaptrip.demo.dto.Flight;
 
 public interface IFlightService {
-	
-	public List<Flight> listFlights(); //List All 
+	//CRUD	
+	public List<Flight> listFlights();
 		
-	public Flight saveFlight(Flight flight);//Save a new flight "CREATE"
+	public Flight saveFlight(Flight flight);
 	
-	public Flight flightXID(Long id); //Read flight from a part "READ"
+	public Flight flightXID(Long id); 
 			
-	public Flight updateFlight(Flight flight); //Update flight data "UPDATE"
+	public Flight updateFlight(Flight flight); 
+		
+	public void deleteFlight(Long id);
 	
-	public Flight changeStatus(Long id); //Change the flight status "DELETE"
-	
-	public void deleteFlight(Long id);// Delete a flight via id "DELETE"
+	public Flight changeStatus(Long id);  //Change the flight status "logic delete"
+
 }
