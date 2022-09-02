@@ -15,7 +15,7 @@ insert into Cities (name) values
     ('Barcelona'),
     ('Reus');
 
-insert into Users (name, surnames, email, password, phone_number, birth_date, creation_date, status, role_id) values
+insert into Accomodations (name, surnames, email, password, phone_number, birth_date, creation_date, status, role_id) values
 	('Juan José', 'Rodriguez Goes', 'juanjrogo@gmail.com', 'yonosoyJuan1#', '533567123', '1997-04-22', '2020-04-25', 1, 1),
     ('Esmeralda', 'Goes de la Cruz', 'esmecruz@gmail.com', 'goesEsme(9', '963582471', '1986-11-06', '2021-07-15', 1, 1),
     ('Ylenia', 'Almeria Ballesteros', 'vallesT@gmail.com', 'yosiganeaBnet23/', '642057952', '1978-01-16', '2022-05*10', 1, 11),
@@ -34,15 +34,15 @@ insert into Flights (origin, destination, departure_date, arrival_date, status) 
     (31, 21, '2022-10-22', '2022-10-24', 1);
     
 insert into Bargains (title, image, price, description, expiration_date, outbound_flight, return_flight, accommodation_id, status) values
-	('Estancia por las Ruas Portuguesas', 'img', '150', 'una descripcion', '2022-09-27', 1, 1, 1, 1),
-    ('Gante y su magia', 'img', '200', 'una descripcion', '2022-09-28', 11, 11, 1, 1),
-    ('Tallin, vida de castillos', 'img', '300', 'una descripcion', '2022-09-29', 21, 21, 1, 1);
+	('Estancia por las Ruas Portuguesas', 'url(img)', '150', 'una descripcion', '2022-09-27', 1, 1, 1, 1),
+    ('Gante y su magia', 'url(img)', '200', 'una descripcion', '2022-09-28', 11, 11, 1, 1),
+    ('Tallin, vida de castillos', 'url(img)', '300', 'una descripcion', '2022-09-29', 21, 21, 1, 1);
 
 insert into Accommodations_Features (accommodation_id, feature_id) values
 	(1, 1),
     (11, 11),
     (21, 21);
     
-insert into Bargains_Users (bargain_id, user_id, booked, bookmarked) values
-	(1, 11, 1, 1),
-    (21, 21, 1, 1);
+insert into Bargains_Accomodations (bargain_id, accomodations_id, booked, bookmarked) values
+	(1, 11, 0, 1),
+    (21, 21, 1, 0);
