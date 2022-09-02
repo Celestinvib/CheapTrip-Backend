@@ -1,5 +1,6 @@
 package com.cheaptrip.demo.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class BargainController {
 	public List<Bargain> listByMaxPrice(@PathVariable(name="precio") Long precio){
 		
 		List<Bargain> bargains = listBargains();
-		List<Bargain> bargainsWDesiredPrice = Arrays.asList() ;
+		List<Bargain> bargainsWDesiredPrice = new ArrayList<>() ;
 		
 		for (int i = 0; i < bargains.size(); i++) { 
 			if (bargains.get(i).getPrice() <= precio) { //if a bargain has the same or less price than the desired one 
