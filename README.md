@@ -10,7 +10,7 @@ GET       /alojamientos/ciudades/{ciudad}
 GET       /alojamientos/{id}
 POST      /alojamientos
 PUT       /alojamientos/{id}
-DELETE    /alojamientos/cambiar-estado/{id}
+PUT       /alojamientos/cambiar-estado/{id}
 DELETE    /alojamientos/{id}
 
 Chollo
@@ -19,7 +19,7 @@ GET       /chollos/maxprecio/{precio}
 GET       /chollos/{id}
 POST      /chollos
 PUT       /chollos/{id}
-DELETE    /chollos/cambiar-estado/{id}
+PUT       /chollos/cambiar-estado/{id}
 DELETE    /chollos/{id}
 
 Ciudad
@@ -34,7 +34,7 @@ GET       /vuelos
 GET       /vuelos/{id}
 POST      /vuelos
 PUT       /vuelos/{id}
-DELETE    /vuelos/cambiar-estado/{id}
+PUT       /vuelos/cambiar-estado/{id}
 DELETE    /vuelos/{id}
 
 Rol
@@ -59,12 +59,14 @@ POST      /rasgos-alojamientos
 PUT       /rasgos-alojamientos/{id}
 DELETE    /rasgos-alojamientos/{id}
 
-Chollo-Usuario
-GET       /chollosfavoritos
-GET       /chollosreservados
-GET       /chollos-usuario/{id}
-PUT       /chollos-usuario/{id}
-DELETE    /cholloreservado/cambiar-estado/{id}
-DELETE    /chollofavorito/cambiar-estado/{id}
-DELETE    /chollos-usuario/{id}
+Chollo-Cuenta
+GET       /reservas
+GET       /reservas/{id}
+GET       /chollos-reservados/{id_cuenta}
+GET       /chollos-favoritos/{id_cuenta}
+GET       /chollos-cuentas/{id}
+PUT       /chollos-cuentas/{id}
+PUT       /chollo-reservado/cambiar-estado/{id}
+PUT       /chollo-favorito/cambiar-estado/{id}
+DELETE    /chollos-cuentas/{id}
 ```
