@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cheaptrip.demo.dto.Bargain;
 import com.cheaptrip.demo.dto.Flight;
 import com.cheaptrip.demo.service.FlightServiceImpl;
 
@@ -62,16 +63,21 @@ public class FlightController {
 		return flightUpdated;
 	}
 	
-	@DeleteMapping("/vuelos/cambiar-estado/{id}")
-	public void changeStatusFlight(@PathVariable(name="id")Long id) {
+	@PutMapping("/vuelos/cambiar-estado/{id}")
+	public Flight changeStatusFlight(@PathVariable(name="id")Long id) {
 		
-		Flight flight = flightXID(id);		
+		Flight flight = flightXID(id);
+		Flight flightUpdated = new Flight();
 		
 		if(flight.getStatus() == 0) { 
 			flight.setStatus(1);
 		}else {
 			flight.setStatus(0);	
 		}
+		
+		flightUpdated = flightServiceImpl.updateFlight(flight);
+
+        return flightUpdated;
 	}	
 	
 	@DeleteMapping("/vuelos/{id}")
