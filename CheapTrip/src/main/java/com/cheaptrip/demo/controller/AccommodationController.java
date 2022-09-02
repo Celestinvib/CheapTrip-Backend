@@ -99,17 +99,22 @@ public class AccommodationController {
 		return accommodationUpdated;
 	}
 	
-	@DeleteMapping("/alojamientos/cambiar-estado/{id}")
-	public void changeStatusAccommodation(@PathVariable(name="id")Long id) {
-		
-		Accommodation accommodation = accommodationXID(id);		
-		
-		if(accommodation.getStatus() == 0) { 
-			accommodation.setStatus(1);
-		}else {
-			accommodation.setStatus(0);	
-		}
-	}
+	@PutMapping("/alojamientos/cambiar-estado/{id}")
+    public Accommodation changeStatusAccommodation(@PathVariable(name="id")Long id) {
+
+        Accommodation accommodation = accommodationXID(id);
+        Accommodation accommodationUpdated = new Accommodation();
+
+        if(accommodation.getStatus() == 0) { 
+            accommodation.setStatus(1);
+        }else {
+            accommodation.setStatus(0);
+        }
+
+        accommodationUpdated = accommodationServiceImpl.updateAccommodation(accommodation);
+
+        return accommodationUpdated;
+    }
 	
 	
 	@DeleteMapping("/alojamientos/{id}")

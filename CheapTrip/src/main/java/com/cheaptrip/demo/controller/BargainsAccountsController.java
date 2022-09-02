@@ -21,6 +21,21 @@ public class BargainsAccountsController {
 	BargainsAccountsServiceImpl bargainsAccountsServiceImpl;
 	
 	
+	@GetMapping("/reservas")
+	public List<BargainsAccounts> listBargainsAccountsBooked() {
+		
+		List<BargainsAccounts> bargainsAccounts = bargainsAccountsServiceImpl.listBargainsAccounts();
+		List<BargainsAccounts> bookings = new ArrayList<>();
+		
+		for(int i = 0; i < bargainsAccounts.size(); i++) {
+			if(bargainsAccounts.get(i).getBooked() == 1) {
+				bookings.add(bargainsAccounts.get(i));
+			}
+		}
+		
+		return bookings;
+	}
+	
 	@GetMapping("/chollos-favoritos/{id_cuenta}")
 	public List<BargainsAccounts> findBookmarkedByAccount(@PathVariable(name="id_cuenta") Long accountId){
 		
@@ -36,11 +51,6 @@ public class BargainsAccountsController {
 		return bargainsAccountsSelected;
 	}
 	
-	@GetMapping("/reservas")
-	public List<BargainsAccounts> listBargainsAccountsBooked() {
-		
-		return bargainsAccountsServiceImpl.listBargainsAccountsBooked();
-	}
 	
 	@GetMapping("/reservas/{id}")
 	public BargainsAccounts bargainsAccountsXID(@PathVariable(name="id") Long id) {
@@ -52,7 +62,7 @@ public class BargainsAccountsController {
 		return bargainsAccounts_xid;
 	}
 	
-	@PutMapping("/chollos-usuario/{id}")
+	@PutMapping("/chollos-cuentas/{id}")
 	public BargainsAccounts updateBargainsAccounts(@PathVariable(name="id")Long id,@RequestBody BargainsAccounts bargainsUsers) {
 		
 		BargainsAccounts bargainAccountsSelected= new BargainsAccounts();
@@ -69,21 +79,41 @@ public class BargainsAccountsController {
 		return bargainAccountsUpdated;
 	}
 	
-	@DeleteMapping("/chollo-reservado/cambiar-estado/{id}")
-	public void changeStatusBooked(@PathVariable(name="id")Long id) {
+	@PutMapping("/chollo-reservado/cambiar-estado/{id}")
+	public BargainsAccounts changeStatusBooked(@PathVariable(name="id")Long id) {
 		
-		BargainsAccounts bargainsAccounts = bargainsAccountsXID(id);		
-		bargainsAccounts.setBooked(0);
+		BargainsAccounts bargainsAccounts = bargainsAccountsXID(id);
+		BargainsAccounts bargainsAccountsUpdated = new BargainsAccounts();
+
+		
+		if(bargainsAccounts.getBooked() == 0) { 
+			bargainsAccounts.setBooked(1);
+		}else {
+			bargainsAccounts.setBooked(0);	
+		}
+		
+		bargainsAccountsUpdated = bargainsAccountsServiceImpl.updateBargainsAccounts(bargainsAccounts);
+		return bargainsAccountsUpdated;
 	}
 	
-	@DeleteMapping("/chollo-favorito/cambiar-estado/{id}")
-	public void changeStatusBookmarked(@PathVariable(name="id")Long id) {
+	@PutMapping("/chollo-favorito/cambiar-estado/{id}")
+	public BargainsAccounts changeStatusBookmarked(@PathVariable(name="id")Long id) {
 		
-		BargainsAccounts bargainsAccounts = bargainsAccountsXID(id);		
-		bargainsAccounts.setBookmarked(0);
+		BargainsAccounts bargainsAccounts = bargainsAccountsXID(id);
+		BargainsAccounts bargainsAccountsUpdated = new BargainsAccounts();
+
+		
+		if(bargainsAccounts.getBookmarked() == 0) { 
+			bargainsAccounts.setBookmarked(1);
+		}else {
+			bargainsAccounts.setBookmarked(0);	
+		}
+		
+		bargainsAccountsUpdated = bargainsAccountsServiceImpl.updateBargainsAccounts(bargainsAccounts);
+		return bargainsAccountsUpdated;
 	}
 	
-	@DeleteMapping("/chollos-usuario/{id}")
+	@DeleteMapping("/chollos-cuentas/{id}")
 	public void deleteBargainsAccounts(@PathVariable(name="id")Long id) {
 		bargainsAccountsServiceImpl.deleteBargainsAccounts(id);
 	}	
