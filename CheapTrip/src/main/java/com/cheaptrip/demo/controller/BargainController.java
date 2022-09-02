@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cheaptrip.demo.dto.Accommodation;
 import com.cheaptrip.demo.dto.Bargain;
 import com.cheaptrip.demo.service.BargainServiceImpl;
 
@@ -79,16 +80,20 @@ public class BargainController {
 		return bargainUpdated;
 	}
 	
-	@DeleteMapping("/chollos/cambiar-estado/{id}")
-	public void changeStatusBargain(@PathVariable(name="id")Long id) {
+	@PutMapping("/chollos/cambiar-estado/{id}")
+	public Bargain changeStatusBargain(@PathVariable(name="id")Long id) {
 		
-		Bargain bargain = bargainXID(id);		
+		Bargain bargain = bargainXID(id);
+		Bargain bargainUpdated = new Bargain();
 		
 		if(bargain.getStatus() == 0) { 
 			bargain.setStatus(1);
 		}else {
 			bargain.setStatus(0);	
 		}
+		bargainUpdated = bargainServiceImpl.updateBargain(bargain);
+
+	        return bargainUpdated;
 	}	
 	
 	
