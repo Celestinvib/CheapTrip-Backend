@@ -22,8 +22,7 @@ public class Flight {
 	/**Attributes */
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//Find last value and increment from final id of db
-	private Long id;
+	private String id;
 	
 	private Date departure_date;
 
@@ -61,7 +60,7 @@ public class Flight {
 	 * @param destination
 	 * @param status
 	 */
-	public Flight(Long id, Date departure_date, Date arrival_date, City origin, City destination, int status) {
+	public Flight(String id, Date departure_date, Date arrival_date, City origin, City destination, int status) {
 		this.id = id;
 		this.departure_date = departure_date;
 		this.arrival_date = arrival_date;
@@ -75,14 +74,14 @@ public class Flight {
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

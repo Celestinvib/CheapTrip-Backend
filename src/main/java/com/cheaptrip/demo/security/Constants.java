@@ -2,6 +2,7 @@ package com.cheaptrip.demo.security;
 
 public class Constants {
 
+
     // Spring Security
     public static final String REGISTER_URL = "/registrar";
     public static final String LOGIN_URL = "/login";

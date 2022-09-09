@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cheaptrip.demo.dao.IAccountDAO;
+import com.cheaptrip.demo.dto.Accommodation;
 import com.cheaptrip.demo.dto.Account;
 import com.cheaptrip.demo.dto.Role;
 import com.cheaptrip.demo.service.AccountServiceImpl;
@@ -65,19 +66,19 @@ public class AccountController {
 	}
 	
 	@PostMapping("/cuentas")
-	public Account saveAccountAdmin(@RequestBody Account user) {
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		iUserDAO.save(user);
-		return user;
+	public Account saveAccountAdmin(@RequestBody Account account) {
+		account.setPassword(bCryptPasswordEncoder.encode(account.getPassword()));
+		iUserDAO.save(account);
+		return account;
 	}
 
 	@GetMapping("/cuentas")
-	public List<Account> getAllUser() {
+	public List<Account> getAllAccounts() {
 		return iUserDAO.findAll();
 	}
 
 	@GetMapping("/cuentas/{email}")
-	public Account getUser(@PathVariable String email) {
+	public Account getAccount(@PathVariable String email) {
 		return iUserDAO.findByEmail(email);
 	}
 	
@@ -96,9 +97,25 @@ public class AccountController {
 		return accountUpdated;
 	}
 	
+	@PutMapping("/cuentas/cambiar-estado/{id}")
+    public Account changeStatusAccount(@PathVariable(name="id")Long id) {
+
+		Account account = accountServiceImpl.accountByID(id);
+		Account accountUpdated = new Account();
+
+        if(account.getStatus() == 0) { 
+            account.setStatus(1);
+        }else {
+            account.setStatus(0);
+        }
+
+        accountUpdated = accountServiceImpl.updateAccount(account);
+        return accountUpdated;
+    }
+	
 	@DeleteMapping("/cuentas/{id}")
-	public String deleteUser(@PathVariable(name="id")long id) {
+	public String deleteAccount(@PathVariable(name="id")long id) {
 		iUserDAO.deleteById(id);
-		return "User deleted.";
+		return "Account deleted.";
 	}
 }
