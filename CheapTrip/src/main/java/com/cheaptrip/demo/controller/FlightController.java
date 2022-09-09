@@ -35,7 +35,7 @@ public class FlightController {
 	}
 	
 	@GetMapping("/vuelos/{id}")
-	public Flight flightXID(@PathVariable(name="id") Long id) {
+	public Flight flightXID(@PathVariable(name="id") String id) {
 		
 		Flight flight_xid= new Flight();
 		
@@ -45,7 +45,7 @@ public class FlightController {
 	}
 	
 	@PutMapping("/vuelos/{id}")
-	public Flight updateFlight(@PathVariable(name="id")Long id,@RequestBody Flight flight) {
+	public Flight updateFlight(@PathVariable(name="id")String id,@RequestBody Flight flight) {
 		
 		Flight flightSelected= new Flight();
 		Flight flightUpdated = new Flight();
@@ -63,7 +63,7 @@ public class FlightController {
 	}
 	
 	@PutMapping("/vuelos/cambiar-estado/{id}")
-	public Flight changeStatusFlight(@PathVariable(name="id")Long id) {
+	public Flight changeStatusFlight(@PathVariable(name="id")String id) {
 		
 		Flight flight = flightXID(id);
 		Flight flightUpdated = new Flight();
@@ -80,7 +80,7 @@ public class FlightController {
 	}	
 	
 	@DeleteMapping("/vuelos/{id}")
-	public void deleteFlight(@PathVariable(name="id")Long id) {
+	public void deleteFlight(@PathVariable(name="id")String id) {
 		flightServiceImpl.deleteFlight(id);
 	}	
 }

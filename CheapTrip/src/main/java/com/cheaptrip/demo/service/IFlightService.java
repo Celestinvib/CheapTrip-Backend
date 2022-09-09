@@ -10,12 +10,12 @@ public interface IFlightService {
 		
 	public Flight saveFlight(Flight flight);
 	
-	public Flight flightXID(Long id); 
+	public Flight flightXID(String id); 
 			
 	public Flight updateFlight(Flight flight); 
 		
-	public void deleteFlight(Long id);
+	public void deleteFlight(String id);
 	
-	public Flight changeStatus(Long id);  //Change the flight status "logic delete"
+	public Flight changeStatus(String id);  //Change the flight status "logic delete"
 
 }
