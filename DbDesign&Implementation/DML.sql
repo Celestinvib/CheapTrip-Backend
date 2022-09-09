@@ -1,3 +1,13 @@
+drop table if exists Bargains_Accounts;
+drop table if exists Accommodations_Features;
+drop table if exists Features;
+drop table if exists Bargains;
+drop table if exists Flights;
+drop table if exists Accommodations;
+drop table if exists Cities;
+drop table if exists Accounts;
+drop table if exists Roles;
+
 create table Roles(
   id int PRIMARY KEY AUTO_INCREMENT,
   name varchar(100)
@@ -43,7 +53,7 @@ create table Accommodations (
 );
 
 create table Flights (
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(150) PRIMARY KEY,
     origin int,
     destination int,
     departure_date date,
@@ -62,8 +72,8 @@ create table Bargains (
     price double,
     description varchar(250),
 	expiration_date date NULL,
-    outbound_flight int NULL,
-    return_flight int,
+    outbound_flight VARCHAR(150),
+    return_flight VARCHAR(150),
     accommodation_id int,
     status bit(1),
     CONSTRAINT FK_FlightBargainOutbound FOREIGN KEY (outbound_flight)
