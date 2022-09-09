@@ -30,7 +30,8 @@ public class Account {
 	private String phone_number;
 	private Date birth_date;
 	private Date creation_date;
-	
+	private int status;
+
 	@ManyToOne
     @JoinColumn(name="role_id")
     private Role role;
@@ -45,7 +46,6 @@ public class Account {
 		
 	}
 	
-
 	/**
 	 * @param id
 	 * @param name
@@ -55,10 +55,12 @@ public class Account {
 	 * @param phone_number
 	 * @param birth_date
 	 * @param creation_date
+	 * @param status
 	 * @param role
 	 */
 	public Account(long id, String name, String surnames, String email, String password, String phone_number,
-			Date birth_date, Date creation_date, Role role) {
+			Date birth_date, Date creation_date, int status, Role role) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.surnames = surnames;
@@ -67,9 +69,9 @@ public class Account {
 		this.phone_number = phone_number;
 		this.birth_date = birth_date;
 		this.creation_date = creation_date;
+		this.status = status;
 		this.role = role;
 	}
-
 
 
 	/**
@@ -198,7 +200,20 @@ public class Account {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+	
+	/**
+	 * @return the status
+	 */
+	public int getStatus() {
+		return status;
+	}
 
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
 	/**
 	 * @return the bargainsAccounts

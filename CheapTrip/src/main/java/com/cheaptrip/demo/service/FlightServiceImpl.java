@@ -27,7 +27,7 @@ public class FlightServiceImpl implements IFlightService{
 	}
 
 	@Override
-	public Flight flightXID(Long id) {
+	public Flight flightXID(String id) {
 		
 		return iFlightDAO.findById(id).get();
 	}
@@ -39,13 +39,13 @@ public class FlightServiceImpl implements IFlightService{
 	}
 
 	@Override
-	public Flight changeStatus(Long id) {
+	public Flight changeStatus(String id) {
 		
 		return iFlightDAO.findByStatus(id);
 	}
 	
 	@Override
-	public void deleteFlight(Long id) {
+	public void deleteFlight(String id) {
 		
 		iFlightDAO.deleteById(id);
 	}
