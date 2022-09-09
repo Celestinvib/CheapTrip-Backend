@@ -46,6 +46,22 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 			.cors().and()
 			.csrf().disable()
 			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL,REGISTER_URL).permitAll()
+			.antMatchers(HttpMethod.GET,
+					"/chollos",
+					"/chollos/maxprecio/{precio}",
+					"/chollos/{id}",
+					"/alojamientos/categorias/{categoria}",
+					"/alojamientos/valoracion-minima/{valoracion}",
+					"/alojamientos/ciudades/{ciudad}",
+					"/alojamientos/{id}",
+					"/ciudades",
+					"/ciudades/{id}",
+					"/rasgos",
+					"/rasgos/{id}",
+					"/vuelos",
+					"vuelos/{id}",
+					"/rasgos-alojamientos/{id}"
+					).permitAll()
 			.anyRequest().authenticated().and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager()))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager()));
