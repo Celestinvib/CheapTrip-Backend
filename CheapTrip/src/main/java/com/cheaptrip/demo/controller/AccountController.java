@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cheaptrip.demo.dao.IAccountDAO;
 import com.cheaptrip.demo.dto.Account;
+import com.cheaptrip.demo.dto.Role;
 import com.cheaptrip.demo.service.AccountServiceImpl;
 
 @RestController
@@ -47,8 +48,24 @@ public class AccountController {
 	      .body("Response with header using ResponseEntity");
 	}
 	
+	@PostMapping("/registrar")
+	public Account saveAccount(@RequestBody Account account) {
+		account.setPassword(bCryptPasswordEncoder.encode(account.getPassword()));
+		
+		/*
+		 * Set the role of the account to normal user so that even though they bypass the frontend security 
+		 * the admins and the employees accounts cannot be created using the public registry)
+		 */
+		Role accountRole = new Role();
+		accountRole.setId(Long.valueOf(1));
+		account.setRole(accountRole); 
+		
+		iUserDAO.save(account);
+		return account;
+	}
+	
 	@PostMapping("/cuentas")
-	public Account saveUser(@RequestBody Account user) {
+	public Account saveAccountAdmin(@RequestBody Account user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		iUserDAO.save(user);
 		return user;

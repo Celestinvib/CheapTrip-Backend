@@ -22,6 +22,14 @@ PUT       /chollos/{id}
 PUT       /chollos/cambiar-estado/{id}
 DELETE    /chollos/{id}
 
+Cuentas
+GET       /cuentas
+GET       /cuentas/{email}
+POST      /registrar
+POST      /cuentas
+PUT       /cuentas/{id}
+DELETE    /cuentas/{id}
+
 Ciudad
 GET       /ciudades
 GET       /ciudades/{id}
