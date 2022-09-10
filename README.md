@@ -28,6 +28,7 @@ GET       /cuentas/{email}
 POST      /registrar
 POST      /cuentas
 PUT       /cuentas/{id}
+PUT       /cuentas/cambiar-estado/{id}
 DELETE    /cuentas/{id}
 
 Ciudad
