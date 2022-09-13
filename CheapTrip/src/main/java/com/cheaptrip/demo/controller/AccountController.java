@@ -61,7 +61,8 @@ public class AccountController {
 		 */
 		Role accountRole = new Role();
 		accountRole.setId(Long.valueOf(1));
-			
+		
+		account.addRole(accountRole);
 		iUserDAO.save(account);
 		return account;
 	}
