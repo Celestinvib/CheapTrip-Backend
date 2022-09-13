@@ -1,7 +1,6 @@
 insert into Roles (name) values
-	('client'),
-	('employee'),
-	('admin');
+	('ROLE_ADMIN'),
+	('ROLE_USER');
 
 insert into Features (name) values
 	('wifi'),
@@ -15,11 +14,19 @@ insert into Cities (name) values
     ('Barcelona'),
     ('Reus');
 
-insert into Accounts (name, surnames, email, password, phone_number, birth_date, creation_date, status, role_id) values
-	('Juan José', 'Rodriguez Goes', 'juanjrogo@gmail.com', '$2a$12$0GGJEBdiLAyq8hUrNkLXy.O8lLOBpwkMLfR1V5WFYNiSwAZmdpBKO', '533567123', '1997-04-22', '2020-04-25', 1, 1),
-    ('Esmeralda', 'Goes de la Cruz', 'esmecruz@gmail.com', '$2a$12$8zEYGdf2tubyf5nB63YX8eutmswkjbWtNnj/pmGz4FpyOjG1PIk.q', '963582471', '1986-11-06', '2021-07-15', 1, 1),
-    ('Ylenia', 'Almeria Ballesteros', 'vallesT@gmail.com', '$2a$12$SK6kaGW1qhbJ/nr/HSJBRufW7GewxLxUxKTAAgsgmCSlJlCyTVOkW', '642057952', '1978-01-16', '2022-05*10', 1, 11),
-    ('Pedro', 'De la Rosa Lobato', 'laF1yAlonso@gmail.com', '$2a$12$ktNMx1UwJRqxH2aqQ.odLuiBVpOMrJ8pVFnxGZkyzsJjUGvPjvgmG', '456789123', '2001-01-23', '2021-04-22', 1, 21);
+insert into Accounts (name, surnames, email, password, phone_number, birth_date, creation_date, status) values
+	('NCP', 'Admin', 'admin', '$2a$12$z/VXZDxQrPjXdjG2Sul.H.4NM76MKwsbcewCx8mZo1qXDmlP3TsTm', '111222333', '1997-04-22', '1900-01-01', 1),
+	('Juan José', 'Rodriguez Goes', 'juanjrogo@gmail.com', '$2a$12$0GGJEBdiLAyq8hUrNkLXy.O8lLOBpwkMLfR1V5WFYNiSwAZmdpBKO', '533567123', '1997-04-22', '2020-04-25', 1),
+    ('Esmeralda', 'Goes de la Cruz', 'esmecruz@gmail.com', '$2a$12$8zEYGdf2tubyf5nB63YX8eutmswkjbWtNnj/pmGz4FpyOjG1PIk.q', '963582471', '1986-11-06', '2021-07-15', 1),
+    ('Ylenia', 'Almeria Ballesteros', 'vallesT@gmail.com', '$2a$12$SK6kaGW1qhbJ/nr/HSJBRufW7GewxLxUxKTAAgsgmCSlJlCyTVOkW', '642057952', '1978-01-16', '2022-05-10', 1),
+    ('Pedro', 'De la Rosa Lobato', 'laF1yAlonso@gmail.com', '$2a$12$ktNMx1UwJRqxH2aqQ.odLuiBVpOMrJ8pVFnxGZkyzsJjUGvPjvgmG', '456789123', '2001-01-23', '2021-04-22', 1);
+
+insert into AccountsRoles(account_id, role_id) values
+	(1, 1),
+    (11, 11),
+    (21, 11),
+    (31, 11),
+    (41, 11);
 
 insert into Accommodations (name, address, category, latitude, longitude, rating, city_id, status) values
 	('Pestana CR7', 'Rua do Comercio', 'Hotel', '38.70919', '-9.13596', '8.8', 1, 1),
