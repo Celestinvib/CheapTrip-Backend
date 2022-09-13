@@ -21,7 +21,7 @@ insert into Accounts (name, surnames, email, password, phone_number, birth_date,
     ('Ylenia', 'Almeria Ballesteros', 'vallesT@gmail.com', '$2a$12$SK6kaGW1qhbJ/nr/HSJBRufW7GewxLxUxKTAAgsgmCSlJlCyTVOkW', '642057952', '1978-01-16', '2022-05-10', 1),
     ('Pedro', 'De la Rosa Lobato', 'laF1yAlonso@gmail.com', '$2a$12$ktNMx1UwJRqxH2aqQ.odLuiBVpOMrJ8pVFnxGZkyzsJjUGvPjvgmG', '456789123', '2001-01-23', '2021-04-22', 1);
 
-insert into AccountsRoles(account_id, role_id) values
+insert into Accounts_Roles(account_id, role_id) values
 	(1, 1),
     (11, 11),
     (21, 11),

@@ -6,7 +6,7 @@ drop table if exists Bargains;
 drop table if exists Flights;
 drop table if exists Accommodations;
 drop table if exists Cities;
-drop table if exists AccountsRoles;
+drop table if exists Accounts_Roles;
 drop table if exists Accounts;
 drop table if exists Roles;
 
@@ -38,7 +38,7 @@ create table Accounts(
   status bit(1)
 );
 
-create table AccountsRoles(
+create table Accounts_Roles(
 	id int PRIMARY KEY AUTO_INCREMENT,
     account_id int,
     role_id int,
