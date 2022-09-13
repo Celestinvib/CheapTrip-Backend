@@ -26,11 +26,6 @@ public class Role {
 	@Column(name = "name")
 	private String name;
 
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
-	private List<Account> user;
-
-	
 	
 	/**
 	 * Constructors
@@ -82,25 +77,6 @@ public class Role {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-	/**
-	 * @return the user
-	 */
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "User")
-	public List<Account> getUser() {
-		return user;
-	}
-
-
-	/**
-	 * @param user the user to set
-	 */
-	public void setUser(List<Account> user) {
-		this.user = user;
-	}
-
 
 	/**
 	 * ToString
