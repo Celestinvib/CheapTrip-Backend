@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -62,9 +63,11 @@ public class AccommodationController {
 		return accommodationsCity;
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')") //Only users with role ADMIn can access this endpoint
 	@PostMapping("/alojamientos")
 	public Accommodation saveAccommodation(@RequestBody Accommodation accommodation) {
 		
+		accommodation.setStatus(1); //Sets the accommodation status to 1 (active accommodation)
 		return accommodationServiceImpl.saveAccommodation(accommodation);
 	}
 	
@@ -78,6 +81,7 @@ public class AccommodationController {
 		return accommodation_xid;
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/alojamientos/{id}")
 	public Accommodation updateAccommodation(@PathVariable(name="id")Long id,@RequestBody Accommodation accommodation) {
 		
@@ -99,6 +103,7 @@ public class AccommodationController {
 		return accommodationUpdated;
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/alojamientos/cambiar-estado/{id}")
     public Accommodation changeStatusAccommodation(@PathVariable(name="id")Long id) {
 
@@ -116,7 +121,7 @@ public class AccommodationController {
         return accommodationUpdated;
     }
 	
-	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/alojamientos/{id}")
 	public void deleteAccommodation(@PathVariable(name="id")Long id) {
 		accommodationServiceImpl.deleteAccommodation(id);

@@ -3,6 +3,7 @@ package com.cheaptrip.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,9 +29,11 @@ public class FlightController {
 		return flightServiceImpl.listFlights();
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/vuelos")
 	public Flight saveFlight(@RequestBody Flight flight) {
 		
+		flight.setStatus(1); //Sets the bargain status to 1 (active bargain)
 		return flightServiceImpl.saveFlight(flight);
 	}
 	
@@ -44,6 +47,7 @@ public class FlightController {
 		return flight_xid;
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/vuelos/{id}")
 	public Flight updateFlight(@PathVariable(name="id")String id,@RequestBody Flight flight) {
 		
@@ -62,6 +66,7 @@ public class FlightController {
 		return flightUpdated;
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/vuelos/cambiar-estado/{id}")
 	public Flight changeStatusFlight(@PathVariable(name="id")String id) {
 		
@@ -79,6 +84,7 @@ public class FlightController {
         return flightUpdated;
 	}	
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/vuelos/{id}")
 	public void deleteFlight(@PathVariable(name="id")String id) {
 		flightServiceImpl.deleteFlight(id);

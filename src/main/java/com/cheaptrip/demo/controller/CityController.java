@@ -3,6 +3,7 @@ package com.cheaptrip.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ public class CityController {
 		return cityServiceImpl.listCities();
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/ciudades")
 	public City saveCity(@RequestBody City city) {
 		
@@ -42,6 +44,7 @@ public class CityController {
 		return city_byid;
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/ciudades/{id}")
 	public City updateCity(@PathVariable(name="id")Long id,@RequestBody City city) {
 		
@@ -57,7 +60,7 @@ public class CityController {
 		return cityUpdated;
 	}
 	
-	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/ciudades/{id}")
 	public void deleteCity(@PathVariable(name="id")Long id) {
 		cityServiceImpl.deleteCity(id);

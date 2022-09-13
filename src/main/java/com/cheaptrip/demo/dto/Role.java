@@ -14,59 +14,30 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="roles")
+@Table(name = "roles")
 public class Role {
-
-	/**
-	 * Attributes
-	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@Column(name = "name")
-	private String name;
-
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
-	private List<Account> user;
-
-	
-	
-	/**
-	 * Constructors
-	 */
-	
-	public Role() {
-	}
-
-
-	/**
-	 * @param name
-	 */
-	public Role(String name) {
-		this.name = name;
-	}
-
-
-	/**
-	 * GETTERS and SETTERS
-	 */
-	
-	/**
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+     
+    @Column(nullable = false, length = 50, unique = true)
+    private String name;
+ 
+    public Role() { }
+     
+    public Role(String name) {
+        this.name = name;
+    }
+     
+    public Role(Integer id) {
+        this.id = id;
+    }
+ 
+    /**
 	 * @return the id
 	 */
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 
 	/**
 	 * @return the name
@@ -75,7 +46,6 @@ public class Role {
 		return name;
 	}
 
-
 	/**
 	 * @param name the name to set
 	 */
@@ -83,32 +53,9 @@ public class Role {
 		this.name = name;
 	}
 
-
-	/**
-	 * @return the user
-	 */
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "User")
-	public List<Account> getUser() {
-		return user;
-	}
-
-
-	/**
-	 * @param user the user to set
-	 */
-	public void setUser(List<Account> user) {
-		this.user = user;
-	}
-
-
-	/**
-	 * ToString
-	 */
-	
 	@Override
-	public String toString() {
-		return "Role [id=" + id + ", name=" + name + "]";
-	}
+    public String toString() {
+        return this.name;
+    }
 
 }

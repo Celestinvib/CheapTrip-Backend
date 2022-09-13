@@ -6,9 +6,10 @@ import static com.cheaptrip.demo.security.Constants.SUPER_SECRET_KEY;
 import static com.cheaptrip.demo.security.Constants.TOKEN_BEARER_PREFIX;
 import static com.cheaptrip.demo.security.Constants.TOKEN_EXPIRATION_TIME;
 
+
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -19,7 +20,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.cheaptrip.demo.dto.Account;
@@ -40,27 +41,48 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
 		try {
-			Account credenciales = new ObjectMapper().readValue(request.getInputStream(), Account.class);
+			Account credentials = new ObjectMapper().readValue(request.getInputStream(), Account.class);
 
 			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-					credenciales.getEmail(), credenciales.getPassword(), new ArrayList<>()));
+					credentials.getEmail(), credentials.getPassword(), credentials.getAuthorities()));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
-
+	
+	public String generateAccessToken(Account user) {
+		final String authorities = user.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.joining(","));
+		
+		return Jwts.builder()
+			.setIssuedAt(new Date()) // token Issuing Date
+			.setIssuer(ISSUER_INFO) 
+			.claim("roles", authorities) 
+			.setSubject(user.getEmail()) // Subject for the token 
+			.setExpiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION_TIME)) // Expiration date for the token
+			.signWith(SignatureAlgorithm.HS512, SUPER_SECRET_KEY)  // What to sign the token with
+			.compact();	// Build and sign the token
+	
+	}
+	
 	@Override
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication auth) throws IOException, ServletException {
+		
+		//Generate JWT UserDetails casting account to use UserDetails for getting the principal of auth
+		String JWTToken = generateAccessToken((Account) auth.getPrincipal());
+		
+		// Adds the JWT to the header  
+		response.addHeader(HEADER_AUTHORIZACION_KEY, TOKEN_BEARER_PREFIX + " - " + JWTToken);
 
-		String token = Jwts.builder().setIssuedAt(new Date()).setIssuer(ISSUER_INFO)
-				.setSubject(((User)auth.getPrincipal()).getUsername())
-				.setExpiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION_TIME))
-				.signWith(SignatureAlgorithm.HS512, SUPER_SECRET_KEY).compact();
-		response.addHeader(HEADER_AUTHORIZACION_KEY, TOKEN_BEARER_PREFIX + " " + token); // returns token by header
-		response.getWriter().write("{\"token\": \"" + token + "\"}"); // returns token by body
-		System.out.println(response.getHeader(HEADER_AUTHORIZACION_KEY));
-	
+		//Write the respond body
+		response.getWriter().write(
+			"Welcome!" + 
+			",\n JWT: " + JWTToken + 
+			"\nAccount role: " + ((Account) auth.getPrincipal()).getRoles().toString()
+		);
+		
 	}
 	
 	
