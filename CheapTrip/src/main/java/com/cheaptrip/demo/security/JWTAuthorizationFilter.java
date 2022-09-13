@@ -60,15 +60,11 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 			return;
 		}
 		
-		String username = Jwts.parser()
-				// Cipher key to decrypt the token
-				.setSigningKey(SUPER_SECRET_KEY)
-				// Parse the Bearer Token
+		String username = Jwts.parser() // Parse the Bearer Token
+				.setSigningKey(SUPER_SECRET_KEY) //Sets the signature key with the constant secret key
 				.parseClaimsJws(HTTPReqtHdr.replace(TOKEN_BEARER_PREFIX, ""))
-				// Get the body of the token...
-				.getBody()
-				// ...and the subject, which (If all's correct) should be the username
-				.getSubject();
+				.getBody() // Get the body of the token
+				.getSubject(); //Get the subject, which (If all's correct) should be the username
 
 
 		UserDetails userDetails = userDetailsService.loadUserByUsername(username);

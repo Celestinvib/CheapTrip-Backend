@@ -41,51 +41,48 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
 		try {
-			Account credenciales = new ObjectMapper().readValue(request.getInputStream(), Account.class);
+			Account credentials = new ObjectMapper().readValue(request.getInputStream(), Account.class);
 
 			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-					credenciales.getEmail(), credenciales.getPassword(), credenciales.getAuthorities()));
+					credentials.getEmail(), credentials.getPassword(), credentials.getAuthorities()));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
-
+	
 	public String generateAccessToken(Account user) {
 		final String authorities = user.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
 		
 		return Jwts.builder()
-			// Token Issuing Date
-			.setIssuedAt(new Date())
-			// Token Issuer (Us)
-			.setIssuer(ISSUER_INFO)
-			.claim("roles", authorities)
-			// Subject for the Token (User who requested it)
-			.setSubject(user.getEmail())
-			// Expiration date for the token
-			.setExpiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION_TIME))
-			// What to sign the token with
-			.signWith(SignatureAlgorithm.HS512, SUPER_SECRET_KEY)
-			// Build and sign the token
-			.compact();		
+			.setIssuedAt(new Date()) // token Issuing Date
+			.setIssuer(ISSUER_INFO) 
+			.claim("roles", authorities) 
+			.setSubject(user.getEmail()) // Subject for the token 
+			.setExpiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION_TIME)) // Expiration date for the token
+			.signWith(SignatureAlgorithm.HS512, SUPER_SECRET_KEY)  // What to sign the token with
+			.compact();	// Build and sign the token
+	
 	}
 	
 	@Override
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication auth) throws IOException, ServletException {
-
+		
+		//Generate JWT UserDetails casting account to use UserDetails for getting the principal of auth
 		String JWTToken = generateAccessToken((Account) auth.getPrincipal());
 		
-		// Add the token to the header...
-		response.addHeader(HEADER_AUTHORIZACION_KEY, TOKEN_BEARER_PREFIX + " " + JWTToken);
+		// Adds the JWT to the header  
+		response.addHeader(HEADER_AUTHORIZACION_KEY, TOKEN_BEARER_PREFIX + " - " + JWTToken);
 
-		// ...and response
-		response.getWriter().write("Logged in succesfully!\nWelcome " + ((Account) auth.getPrincipal()).getName() + ", your token is: " + JWTToken + "\nCurrent roles: " + ((Account) auth.getPrincipal()).getRoles().toString());
+		//Write the respond body
+		response.getWriter().write(
+			"Welcome!" + 
+			",\n JWT: " + JWTToken + 
+			"\nAccount role: " + ((Account) auth.getPrincipal()).getRoles().toString()
+		);
 		
-		// Print it on Spring
-		System.out.println(response.getHeader(HEADER_AUTHORIZACION_KEY));
-	
 	}
 	
 	

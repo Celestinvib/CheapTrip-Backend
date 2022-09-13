@@ -71,7 +71,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		// Se define la clase que recupera los usuarios y el algoritmo para procesar las passwords
+		// The class that retrieves the users and the algorithm to process the passwords is defined
 		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
 	}
 

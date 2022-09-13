@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,9 +42,11 @@ public class BargainController {
 		return bargainsWDesiredPrice;
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/chollos")
 	public Bargain saveBargain(@RequestBody Bargain bargain) {
 		
+		bargain.setStatus(1); //Sets the bargain status to 1 (active bargain)
 		return bargainServiceImpl.saveBargain(bargain);
 	}
 	
@@ -57,6 +60,7 @@ public class BargainController {
 		return bargain_xid;
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/chollos/{id}")
 	public Bargain updateBargain(@PathVariable(name="id")Long id,@RequestBody Bargain bargain) {
 		
@@ -79,6 +83,7 @@ public class BargainController {
 		return bargainUpdated;
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/chollos/cambiar-estado/{id}")
 	public Bargain changeStatusBargain(@PathVariable(name="id")Long id) {
 		
@@ -95,7 +100,7 @@ public class BargainController {
 	        return bargainUpdated;
 	}	
 	
-	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/chollos/{id}")
 	public void deleteBargain(@PathVariable(name="id")Long id) {
 		bargainServiceImpl.deleteBargain(id);
