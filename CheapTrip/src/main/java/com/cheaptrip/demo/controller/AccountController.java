@@ -61,11 +61,11 @@ public class AccountController {
 		 * the admins accounts cannot be created using the public registry)
 		 */		
 		Role role = new Role(11);
-		
+	
 		role.setName("ROLE_USER");
 		account.addRole(role);
 		account.setStatus(1); //Sets the account status to 1 (active account)
-		
+			
 		//Sets the creation date the current date
 		java.util.Date date = new java.util.Date();
 		java.sql.Date sqlDate = new Date(date.getTime());
@@ -85,10 +85,15 @@ public class AccountController {
 
 	
 	@PreAuthorize("hasRole('ADMIN')")
-	@PostMapping("/cuentas")
-	public Account saveAccountAdmin(@RequestBody Account account, Role role) {
+	@PostMapping("/cuentas/admin")
+	public Account saveAccountAdmin(@RequestBody Account account) {
 		account.setPassword(bCryptPasswordEncoder.encode(account.getPassword()));
+		
+		Role role = new Role(1);
+		
+		role.setName("ROLE_ADMIN");
 		account.addRole(role);
+		account.setStatus(1); //Sets the account status to 1 (active account)
 		
 		//Sets the creation date the current date
 		java.util.Date date = new java.util.Date();
@@ -99,11 +104,13 @@ public class AccountController {
 		return account;
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/cuentas")
 	public List<Account> getAllAccounts() {
 		return iUserDAO.findAll();
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/cuentas/{email}")
 	public Account getAccount(@PathVariable String email) {
 		return iUserDAO.findByEmail(email);
