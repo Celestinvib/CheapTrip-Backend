@@ -21,48 +21,11 @@ public class RoleController {
 	@Autowired
 	RoleServiceImpl roleServiceImpl;
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/roles")
 	public List<Role> listRoles(){
 		
 		return roleServiceImpl.listRoles();
 	}
 	
-	@PreAuthorize("hasRole('ADMIN')")
-	@PostMapping("/roles")
-	public Role saveRole(@RequestBody Role role) {
-		
-		return roleServiceImpl.saveRole(role);
-	}
-	
-	@GetMapping("/roles/{id}")
-	public Role roleByID(@PathVariable(name="id") Long id) {
-		
-		Role role_byid= new Role();
-		
-		role_byid= roleServiceImpl.roleByID(id);
-				
-		return role_byid;
-	}
-	
-	@PreAuthorize("hasRole('ADMIN')")
-	@PutMapping("/roles/{id}")
-	public Role updateRole(@PathVariable(name="id")Long id,@RequestBody Role role) {
-		
-		Role roleSelected= new Role();
-		Role roleUpdated = new Role();
-		
-		roleSelected = roleServiceImpl.roleByID(id);
-		
-		roleSelected.setName(role.getName());
-	
-		roleUpdated = roleServiceImpl.updateRole(roleSelected);
-				
-		return roleUpdated;
-	}
-	
-	@PreAuthorize("hasRole('ADMIN')")
-	@DeleteMapping("/roles/{id}")
-	public void deleteRole(@PathVariable(name="id")Long id) {
-		roleServiceImpl.deleteRole(id);
-	}	
 }
