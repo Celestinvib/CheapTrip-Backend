@@ -1,7 +1,11 @@
 package com.cheaptrip.demo.dto;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,16 +13,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
 @Table(name="accounts")
-public class Account {
+public class Account  implements UserDetails{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,9 +41,13 @@ public class Account {
 	private Date creation_date;
 	private int status;
 
-	@ManyToOne
-    @JoinColumn(name="role_id")
-    private Role role;
+	@ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "account_roles",
+        joinColumns = @JoinColumn(name = "account_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>(); 
 	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
@@ -59,7 +72,7 @@ public class Account {
 	 * @param role
 	 */
 	public Account(long id, String name, String surnames, String email, String password, String phone_number,
-			Date birth_date, Date creation_date, int status, Role role) {
+			Date birth_date, Date creation_date, int status) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -70,7 +83,6 @@ public class Account {
 		this.birth_date = birth_date;
 		this.creation_date = creation_date;
 		this.status = status;
-		this.role = role;
 	}
 
 
@@ -186,20 +198,29 @@ public class Account {
 		this.creation_date = creation_date;
 	}
 
-	/**
-	 * @return the role
-	 */
-	public Role getRole() {
-		return role;
-	}
+    
+ 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        for (Role role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+        return authorities;
+    }
+ 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+ 
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+     
+    public void addRole(Role role) {
+        this.roles.add(role);
+    }
 
-
-	/**
-	 * @param role the role to set
-	 */
-	public void setRole(Role role) {
-		this.role = role;
-	}
 	
 	/**
 	 * @return the status
@@ -240,7 +261,32 @@ public class Account {
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", surnames=" + surnames + ", email=" + email + ", password="
 				+ password + ", phone_number=" + phone_number + ", birth_date=" + birth_date + ", creation_date="
-				+ creation_date + ", role=" + role + "]";
+				+ creation_date+ "]";
+	}
+
+	@Override
+	public String getUsername() {
+		return this.getName();
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
 	}
 
 

@@ -3,6 +3,7 @@ package com.cheaptrip.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ public class FeatureController {
 		return featureServiceImpl.listFeatures();
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/rasgos")
 	public Feature saveFeature(@RequestBody Feature feature) {
 		
@@ -42,6 +44,7 @@ public class FeatureController {
 		return feature_byid;
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/rasgos/{id}")
 	public Feature updateFeature(@PathVariable(name="id")Long id,@RequestBody Feature feature) {
 		
@@ -57,7 +60,7 @@ public class FeatureController {
 		return featureUpdated;
 	}
 	
-	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/rasgos/{id}")
 	public void deleteFeature(@PathVariable(name="id")Long id) {
 		featureServiceImpl.deleteFeature(id);

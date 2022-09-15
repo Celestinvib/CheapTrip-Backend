@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -62,6 +63,7 @@ public class BargainsAccountsController {
 		return bargainsAccounts_xid;
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/chollos-cuentas/{id}")
 	public BargainsAccounts updateBargainsAccounts(@PathVariable(name="id")Long id,@RequestBody BargainsAccounts bargainsUsers) {
 		
@@ -79,6 +81,7 @@ public class BargainsAccountsController {
 		return bargainAccountsUpdated;
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/chollo-reservado/cambiar-estado/{id}")
 	public BargainsAccounts changeStatusBooked(@PathVariable(name="id")Long id) {
 		
@@ -96,6 +99,7 @@ public class BargainsAccountsController {
 		return bargainsAccountsUpdated;
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/chollo-favorito/cambiar-estado/{id}")
 	public BargainsAccounts changeStatusBookmarked(@PathVariable(name="id")Long id) {
 		
@@ -113,6 +117,7 @@ public class BargainsAccountsController {
 		return bargainsAccountsUpdated;
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/chollos-cuentas/{id}")
 	public void deleteBargainsAccounts(@PathVariable(name="id")Long id) {
 		bargainsAccountsServiceImpl.deleteBargainsAccounts(id);

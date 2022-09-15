@@ -1,5 +1,28 @@
 # CheapTrip-Backend
-### URIs endpoints: 
+
+![image](https://user-images.githubusercontent.com/55434881/189713243-1e098854-2b36-49b9-a5a1-4c15346db806.png)
+
+## 📑 About
+#### Cheaptrip Backend
+The best trips at incredible prices!<br>
+Built with the Spring Framework uses an external mySQL database designed, implemented and deployed by us.
+
+The spring app and the database are deployed on<a href="https://www.heroku.com/home"> heroku</a>.
+## ⚙Features 
+* MVC structure
+* Basic CRUD + Personalized methods & endpoints
+#### Security: 
+* JWT 
+* Roles system
+
+## 🛸 Technologies & Versions
+
+* Java 1.8 
+* Spring Tool Suite 4 
+* Clear DB MySQL 
+* Heroku 
+
+## 🔗URIs endpoints: 
 
 ```
 Alojamiento
@@ -24,9 +47,10 @@ DELETE    /chollos/{id}
 
 Cuentas
 GET       /cuentas
+GET       /cuenta/{id}
 GET       /cuentas/{email}
 POST      /registrar
-POST      /cuentas
+POST      /cuentas/admin
 PUT       /cuentas/{id}
 PUT       /cuentas/cambiar-estado/{id}
 DELETE    /cuentas/{id}
@@ -48,11 +72,6 @@ DELETE    /vuelos/{id}
 
 Rol
 GET       /roles
-GET       /roles/{id}
-POST      /roles
-PUT       /roles/{id}
-DELETE    /roles/{id}
-
 
 Rasgo
 GET       /rasgos

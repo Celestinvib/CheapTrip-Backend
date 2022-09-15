@@ -26,7 +26,8 @@ public class AccountServiceImpl implements UserDetailsService {
 		if (user == null) {
 			throw new UsernameNotFoundException(email);
 		}
-		return new User(user.getEmail(), user.getPassword(), emptyList());
+		
+		return (Account) user;
 	}
 
 	public Account accountByID(Long id) {

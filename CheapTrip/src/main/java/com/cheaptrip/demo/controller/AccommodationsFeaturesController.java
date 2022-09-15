@@ -3,6 +3,7 @@ package com.cheaptrip.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ public class AccommodationsFeaturesController {
 		return accommodationsFeaturesServiceImpl.listAccommodationsFeatures();
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/rasgos-alojamientos")
 	public AccommodationsFeatures saveAccommodationFeatures(@RequestBody AccommodationsFeatures accommodationFeatures) {
 		
@@ -42,6 +44,7 @@ public class AccommodationsFeaturesController {
 		return accommodationsFeatures_xid;
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/rasgos-alojamientos/{id}")
 	public AccommodationsFeatures updateAccommodation(@PathVariable(name="id")Long id,@RequestBody AccommodationsFeatures accommodation) {
 		
@@ -58,7 +61,7 @@ public class AccommodationsFeaturesController {
 		return accommodationsFeaturesUpdated;
 	}
 	
-	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/rasgos-alojamientos/{id}")
 	public void deleteAccommodationFeatures(@PathVariable(name="id")Long id) {
 		accommodationsFeaturesServiceImpl.deleteAccommodationsFeatures(id);
