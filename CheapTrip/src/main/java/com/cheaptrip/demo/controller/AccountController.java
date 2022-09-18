@@ -104,7 +104,6 @@ public class AccountController {
 		return account;
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/cuentas")
 	public List<Account> getAllAccounts() {
 		return iUserDAO.findAll();

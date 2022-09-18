@@ -26,12 +26,16 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.cheaptrip.demo.dto.Account;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 	private AuthenticationManager authenticationManager;
+	private Gson gson = new Gson();
 
 	public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
 		this.authenticationManager = authenticationManager;
@@ -70,18 +74,19 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication auth) throws IOException, ServletException {
 		
-		//Generate JWT UserDetails casting account to use UserDetails for getting the principal of auth
+		//Generate JWT using UserDetails thanks to the parse of Account for getting the principal of auth
 		String JWTToken = generateAccessToken((Account) auth.getPrincipal());
-		
-		// Adds the JWT to the header  
-		response.addHeader(HEADER_AUTHORIZACION_KEY, TOKEN_BEARER_PREFIX + " - " + JWTToken);
-
-		//Write the respond body
-		response.getWriter().write(
-			"Welcome!" + 
-			",\n JWT: " + JWTToken + 
-			"\nAccount role: " + ((Account) auth.getPrincipal()).getRoles().toString()
-		);
+			
+		//Creates a new json object and adds the jwt to it
+        JsonObject json = new JsonObject();
+        json.addProperty("token", JWTToken);
+        
+        //Send the response using the json just created and sets its type
+        String userJsonString = this.gson.toJson(json);
+		response.addHeader(HEADER_AUTHORIZACION_KEY, TOKEN_BEARER_PREFIX + " - " + JWTToken); // Adds the jwt to the response header  
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(userJsonString);
 		
 	}
 	
