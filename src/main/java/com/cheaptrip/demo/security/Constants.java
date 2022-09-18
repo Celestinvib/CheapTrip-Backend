@@ -2,7 +2,7 @@ package com.cheaptrip.demo.security;
 
 public class Constants {
 
-    // Spring Security
+	   // Spring Security
     public static final String REGISTER_URL = System.getenv("SPRING_REGISTER_URL");;
     public static final String LOGIN_URL = System.getenv("SPRING_LOGIN_URL");;
     public static final String HEADER_AUTHORIZACION_KEY = System.getenv("SPRING_HEADER_AUTHORIZACION_KEY");;
