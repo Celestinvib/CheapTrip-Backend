@@ -2,7 +2,7 @@ package com.cheaptrip.demo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
+//import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +20,9 @@ import com.cheaptrip.demo.dto.Role;
 public class RoleRepositoryTests {
 	
 //    @Autowired private IRoleRepository repo;
-     
-    @Test
-    public void testCreateRoles() {
+//     
+//    @Test
+//    public void testCreateRoles() {
 //        Role admin = new Role("ROLE_ADMIN");
 //        Role user = new Role("ROLE_USER");
 //         
@@ -30,6 +30,6 @@ public class RoleRepositoryTests {
 //         
 //        long count = repo.count();
 //        assertEquals(2, count);
-    }
+//    }
     
 }
