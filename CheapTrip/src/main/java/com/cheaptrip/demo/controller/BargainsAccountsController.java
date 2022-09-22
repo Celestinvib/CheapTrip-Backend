@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +38,21 @@ public class BargainsAccountsController {
 		return bookings;
 	}
 	
+	@GetMapping("/reservas/{id_cuenta}")
+	public List<BargainsAccounts> listBargainsAccountsBookedByAccount(@PathVariable(name="id_cuenta") Long accountId) {
+		
+		List<BargainsAccounts> bargainsAccounts = bargainsAccountsServiceImpl.listBargainsAccounts();
+		List<BargainsAccounts> bookings = new ArrayList<>();
+		
+		for(int i = 0; i < bargainsAccounts.size(); i++) {
+			if((bargainsAccounts.get(i).getAccount().getId() == accountId) && (bargainsAccounts.get(i).getBooked() == 1)) {
+				bookings.add(bargainsAccounts.get(i));
+			}
+		}
+		
+		return bookings;
+	}
+	
 	@GetMapping("/chollos-favoritos/{id_cuenta}")
 	public List<BargainsAccounts> findBookmarkedByAccount(@PathVariable(name="id_cuenta") Long accountId){
 		
@@ -52,15 +68,26 @@ public class BargainsAccountsController {
 		return bargainsAccountsSelected;
 	}
 	
-	
-	@GetMapping("/reservas/{id}")
+	@GetMapping("/chollo-cuenta/{id}")
 	public BargainsAccounts bargainsAccountsXID(@PathVariable(name="id") Long id) {
 		
 		BargainsAccounts bargainsAccounts_xid= new BargainsAccounts();
 		
 		bargainsAccounts_xid= bargainsAccountsServiceImpl.bargainsAccountsXID(id);
-				
+							
 		return bargainsAccounts_xid;
+	}
+	
+	@PostMapping("/chollos-favoritos")
+	public BargainsAccounts saveBookmarkedBargain(@RequestBody BargainsAccounts bargainsUsers) {
+		bargainsUsers.setBookmarked(1);
+		return bargainsAccountsServiceImpl.saveBargainsAccounts(bargainsUsers);
+	}
+	
+	@PostMapping("/reservas")
+	public BargainsAccounts saveBookedBargain(@RequestBody BargainsAccounts bargainsUsers) {
+		bargainsUsers.setBooked(1);
+		return bargainsAccountsServiceImpl.saveBargainsAccounts(bargainsUsers);
 	}
 	
 	@PreAuthorize("hasRole('ADMIN')")
