@@ -95,8 +95,8 @@ GET       /chollo-cuenta/{id}
 GET       /reservas/{id_cuenta}
 GET       /chollos-favoritos/{id_cuenta}
 GET       /chollos-cuentas/{id}
-POST       /chollos-reservados/
-POST       /chollos-favoritos/
+POST      /chollos-reservados/
+POST      /chollos-favoritos/
 PUT       /chollos-cuentas/{id}
 PUT       /chollo-reservado/cambiar-estado/{id}
 PUT       /chollo-favorito/cambiar-estado/{id}
