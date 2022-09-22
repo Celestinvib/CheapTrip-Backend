@@ -49,6 +49,7 @@ Cuentas
 GET       /cuentas
 GET       /cuenta/{id}
 GET       /cuentas/{email}
+GET       /obtener-rol
 POST      /registrar
 POST      /cuentas/admin
 PUT       /cuentas/{id}
@@ -83,16 +84,19 @@ DELETE    /rasgos/{id}
 Rasgos-Alojamientos
 GET       /rasgos-alojamientos
 GET       /rasgos-alojamientos/{id}
+GET       /rasgos-alojamiento/{id-alojamiento}
 POST      /rasgos-alojamientos
 PUT       /rasgos-alojamientos/{id}
 DELETE    /rasgos-alojamientos/{id}
 
 Chollo-Cuenta
 GET       /reservas
-GET       /reservas/{id}
-GET       /chollos-reservados/{id_cuenta}
+GET       /chollo-cuenta/{id}
+GET       /reservas/{id_cuenta}
 GET       /chollos-favoritos/{id_cuenta}
 GET       /chollos-cuentas/{id}
+POST       /chollos-reservados/
+POST       /chollos-favoritos/
 PUT       /chollos-cuentas/{id}
 PUT       /chollo-reservado/cambiar-estado/{id}
 PUT       /chollo-favorito/cambiar-estado/{id}
