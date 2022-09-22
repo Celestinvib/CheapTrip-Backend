@@ -9,6 +9,8 @@ public interface IBargainsAccountsService {
 	//CRUD
 	public List<BargainsAccounts> listBargainsAccounts();
 	
+	public BargainsAccounts saveBargainsAccounts(BargainsAccounts bargainsAccounts);
+	
 	public BargainsAccounts bargainsAccountsXID(Long id);
 	
 	public BargainsAccounts updateBargainsAccounts(BargainsAccounts bargainsAccounts);

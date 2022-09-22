@@ -33,6 +33,12 @@ public class BargainsAccountsServiceImpl implements IBargainsAccountsService {
 	}
 	
 	@Override
+	public BargainsAccounts saveBargainsAccounts(BargainsAccounts bargainsAccounts) {
+		
+		return iBargainsUsersDAO.save(bargainsAccounts);
+	}
+	
+	@Override
 	public BargainsAccounts updateBargainsAccounts(BargainsAccounts bargainsUsers) {
 		
 		return iBargainsUsersDAO.save(bargainsUsers);
@@ -50,5 +56,7 @@ public class BargainsAccountsServiceImpl implements IBargainsAccountsService {
 		
 		iBargainsUsersDAO.deleteById(id);
 	}
+
+
 	
 }

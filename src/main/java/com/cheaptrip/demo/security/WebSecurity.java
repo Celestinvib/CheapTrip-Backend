@@ -47,13 +47,14 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		 */
 		httpSecurity
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-			.cors().configurationSource(corsConfigurationSource()).and() //Sets the configuration cors 
+			.cors().and()
 			.csrf().disable()
 			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL,REGISTER_URL).permitAll()
 			.antMatchers(HttpMethod.GET,
 					"/chollos",
 					"/chollos/maxprecio/{precio}",
 					"/chollos/{id}",
+					"/alojamientos",
 					"/alojamientos/categorias/{categoria}",
 					"/alojamientos/valoracion-minima/{valoracion}",
 					"/alojamientos/ciudades/{ciudad}",

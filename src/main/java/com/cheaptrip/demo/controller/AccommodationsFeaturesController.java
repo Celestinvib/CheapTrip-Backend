@@ -1,5 +1,6 @@
 package com.cheaptrip.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cheaptrip.demo.dto.Accommodation;
 import com.cheaptrip.demo.dto.AccommodationsFeatures;
 import com.cheaptrip.demo.service.AccommodationsFeaturesServiceImpl;
 
@@ -26,6 +28,23 @@ public class AccommodationsFeaturesController {
 		
 		return accommodationsFeaturesServiceImpl.listAccommodationsFeatures();
 	}
+	
+	@GetMapping("/rasgos-alojamiento/{id-alojamiento}")
+	public List<AccommodationsFeatures> getFeaturesAccommodations(@PathVariable(name="id-alojamiento") Long idAccommodation){
+		
+		List<AccommodationsFeatures> accommodationsFeatures = listAccommodationsFeatures();
+		List<AccommodationsFeatures> accommodationFeatures = new ArrayList<>(); 
+		
+		for (int i = 0; i < accommodationsFeatures.size(); i++) { 
+			
+			if (accommodationsFeatures.get(i).getAccommodation().getId() == idAccommodation ) { //Get all the accommodation features rel of the accommodation passed by param
+				accommodationFeatures.add(accommodationsFeatures.get(i));
+			}
+		}
+		
+		return accommodationFeatures;
+	}
+	
 	
 	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/rasgos-alojamientos")
