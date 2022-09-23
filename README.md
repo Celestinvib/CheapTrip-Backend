@@ -22,6 +22,8 @@ The spring app and the database are deployed on<a href="https://www.heroku.com/h
 * Clear DB MySQL 
 * Heroku 
 
+## Deploy 🚀:
+ ·CheapTrip-Backend: https://pcn-cheaptrip-api.herokuapp.com
 ## 🔗URIs endpoints: 
 
 ```
