@@ -131,10 +131,38 @@ public class AccountController {
 		return iUserDAO.findAll();
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/cuentas/{email}")
-	public Account getAccount(@PathVariable String email) {
-		return iUserDAO.findByEmail(email);
+	public ResponseEntity getAccount(@PathVariable String email) {
+		
+		
+		Account accountWithEmail =  iUserDAO.findByEmail(email);
+		
+		if (accountWithEmail == null) {
+			
+			return new ResponseEntity<Object>("No account found with that mail...",HttpStatus.INTERNAL_SERVER_ERROR);
+		
+		}else {
+			
+			String loggedAccountEmail = ((Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getEmail();
+
+			Set<Role> accountRoles = ((Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getRoles();
+
+			HashSet<String> userRolesArray = new HashSet<String>(accountRoles.size());
+
+			// Get all the roles 
+			for (Role role : accountRoles) {
+				userRolesArray.add(role.toString());
+			}
+ 
+			//If the account that is trying to get the account is the same that is making the request (account logged) or is an admin account allows to update it
+			if (accountWithEmail.getEmail().equals(loggedAccountEmail) || userRolesArray.contains("ROLE_ADMIN") == true) {  
+				
+					return new ResponseEntity<Object>(accountWithEmail, HttpStatus.OK);
+					
+			}else {
+				return new ResponseEntity<Object>("You have no permission to get this account",HttpStatus.UNAUTHORIZED);
+			}
+		}	
 	}
 	
 	@GetMapping("/cuenta/{id}")
@@ -162,13 +190,13 @@ public class AccountController {
 				userRolesArray.add(role.toString());
 			}
  
-			//If the account that is trying to update is the same that is making the request (account logged) or is an admin account allows to update it
+			//If the account that is trying to get is the same that is making the request (account logged) or is an admin account allows to update it
 			if (accountSelectedEmail.equals(loggedAccountEmail) || userRolesArray.contains("ROLE_ADMIN") == true) {  
 				
 					return new ResponseEntity<Object>(accountXID, HttpStatus.OK);
 					
 			}else {
-				return new ResponseEntity<Object>("You have no permission to edit this account",HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<Object>("You have no permission to get this account",HttpStatus.UNAUTHORIZED);
 			}
 		}			
 	}
