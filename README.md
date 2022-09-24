@@ -39,6 +39,7 @@ DELETE    /alojamientos/{id}
 Chollo
 GET       /chollos
 GET       /chollos/maxprecio/{precio}
+GET       /chollos/alojamiento/{id-alojamiento}
 GET       /chollos/{id}
 POST      /chollos
 PUT       /chollos/{id}
