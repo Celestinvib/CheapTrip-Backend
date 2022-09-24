@@ -55,6 +55,21 @@ public class BargainController {
 		return bargainsWDesiredPrice;
 	}
 	
+	@GetMapping("/chollos/alojamiento/{id-alojamiento}")
+	public List<Bargain> listByAccommodation(@PathVariable(name="id-alojamiento") Long idAlojamiento){
+		
+		List<Bargain> bargains = listBargains();
+		List<Bargain> bargainsWAccomodaton = new ArrayList<>() ;
+		
+		for (int i = 0; i < bargains.size(); i++) { 
+			if (bargains.get(i).getAccommodation().getId() == idAlojamiento) { //if a bargain has the same accomodation id as the one specified 
+				bargainsWAccomodaton.add(bargains.get(i)); //It's added to the List that will be returned 
+			}
+		}
+		
+		return bargainsWAccomodaton;
+	}	
+	
 	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/chollos")
 	public Bargain saveBargain(@RequestBody Bargain bargain) {
