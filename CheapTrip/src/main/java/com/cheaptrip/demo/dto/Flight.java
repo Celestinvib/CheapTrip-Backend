@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -24,8 +26,10 @@ public class Flight {
 	@Id
 	private String id;
 	
+	@DateTimeFormat
 	private Date departure_date;
-
+	
+	@DateTimeFormat
 	private Date arrival_date;
 	
 	@ManyToOne

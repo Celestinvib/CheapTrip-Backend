@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,6 +19,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,10 +36,13 @@ public class Account  implements UserDetails{
 	private long id;
 	private String name;
 	private String surnames;
+	@Column(unique=true)
 	private String email;
 	private String password;
 	private String phone_number;
+	@DateTimeFormat
 	private Date birth_date;
+	@DateTimeFormat
 	private Date creation_date;
 	private int status;
 

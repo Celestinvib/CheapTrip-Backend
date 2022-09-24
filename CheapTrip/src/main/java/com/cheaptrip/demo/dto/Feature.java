@@ -23,7 +23,7 @@ public class Feature {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name = "name")
+	@Column(name = "name",unique=true)
 	private String name;
 
 	@JsonIgnore
