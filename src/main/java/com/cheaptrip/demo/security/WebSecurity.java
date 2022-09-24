@@ -53,6 +53,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.GET,
 					"/chollos",
 					"/chollos/maxprecio/{precio}",
+					"/chollos/alojamiento/{id-alojamiento}",
 					"/chollos/{id}",
 					"/alojamientos",
 					"/alojamientos/categorias/{categoria}",
