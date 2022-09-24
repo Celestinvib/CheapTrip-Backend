@@ -65,7 +65,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 					"/rasgos/{id}",
 					"/vuelos",
 					"/vuelos/{id}",
-					"/rasgos-alojamientos/{id}"
+					"/rasgos-alojamientos/{id}",
+					"/rasgo-alojamientos/{id-rasgo}"
 					).permitAll()
 			.anyRequest().authenticated().and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager()))

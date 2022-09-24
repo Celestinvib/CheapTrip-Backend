@@ -45,6 +45,22 @@ public class AccommodationsFeaturesController {
 		return accommodationFeatures;
 	}
 	
+	@GetMapping("/rasgo-alojamientos/{id-rasgo}")
+	public List<AccommodationsFeatures> getFeatureAccommodations(@PathVariable(name="id-rasgo") Long idFeatures){
+		
+		List<AccommodationsFeatures> accommodationsFeatures = listAccommodationsFeatures();
+		List<AccommodationsFeatures> accommodationsFeature = new ArrayList<>(); 
+		
+		for (int i = 0; i < accommodationsFeatures.size(); i++) { 
+			
+			if (accommodationsFeatures.get(i).getFeature().getId() == idFeatures ) { //Get all the accommodation that have a specified feature
+				accommodationsFeature.add(accommodationsFeatures.get(i));
+			}
+		}
+		
+		return accommodationsFeature;
+	}
+	
 	
 	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/rasgos-alojamientos")
