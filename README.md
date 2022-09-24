@@ -42,6 +42,7 @@ Chollo
 GET       /chollos
 GET       /todos/chollos
 GET       /chollos/maxprecio/{precio}
+GET       /chollos/expiran-pronto
 GET       /chollos/alojamiento/{id-alojamiento}
 GET       /chollos/{id}
 POST      /chollos
