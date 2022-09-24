@@ -88,6 +88,7 @@ Rasgos-Alojamientos
 GET       /rasgos-alojamientos
 GET       /rasgos-alojamientos/{id}
 GET       /rasgos-alojamiento/{id-alojamiento}
+GET       /rasgo-alojamientos/{id-rasgo}
 POST      /rasgos-alojamientos
 PUT       /rasgos-alojamientos/{id}
 DELETE    /rasgos-alojamientos/{id}
