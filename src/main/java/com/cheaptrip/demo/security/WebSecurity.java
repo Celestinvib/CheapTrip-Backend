@@ -54,6 +54,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 					"/chollos",
 					"/chollos/maxprecio/{precio}",
 					"/chollos/alojamiento/{id-alojamiento}",
+					"/chollos/expiran-pronto",
 					"/chollos/{id}",
 					"/alojamientos",
 					"/alojamientos/categorias/{categoria}",

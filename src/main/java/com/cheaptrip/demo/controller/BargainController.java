@@ -1,6 +1,11 @@
 package com.cheaptrip.demo.controller;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +43,23 @@ public class BargainController {
 	@GetMapping("/todos/chollos")
 	public List<Bargain> listAllBargains(){
 		return bargainServiceImpl.listBargains();
+	}
+	
+	@GetMapping("/chollos/expiran-pronto")
+	public List<Bargain> bargainsExpiringSoon(){
+		List<Bargain> bargains =  bargainServiceImpl.listBargains();
+		List<Bargain> bargainsExpiring = new ArrayList<>() ;
+		
+		java.sql.Date now = new java.sql.Date( new java.util.Date().getTime() );
+		java.sql.Date nextWeek= new java.sql.Date( now.getTime() + 168*60*60*1000);
+				
+		for (int i = 0; i < bargains.size(); i++) { 
+			if (bargains.get(i).getExpiration_date().compareTo(nextWeek) <= 0 ) { //if a bargain expire one week from now
+				bargainsExpiring.add(bargains.get(i)); //It's added to the List that will be returned 
+			}
+		}
+		
+		return bargainsExpiring;
 	}
 	
 	@GetMapping("/chollos/maxprecio/{precio}")
