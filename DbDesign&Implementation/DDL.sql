@@ -40,3 +40,5 @@ insert into Accommodations_Features (accommodation_id, feature_id) values
 insert into Bargains_Accounts (bargain_id, account_id, booked, bookmarked) values
 	(31, 1, 0, 1),
     (41, 21, 1, 0);
+    
+INSERT INTO `heroku_8d815fbd277b0f2`.`accounts` (`birth_date`, `creation_date`, `email`, `name`, `phone_number`, `status`, `surnames`) VALUES ('2001-03-23 01:50:55', '2022-09-25 19:15:55', 'nicolasgarcia@gmail.com', 'Nicolas', '608534015', '1', 'Garcia-Vallaure Conte');
