@@ -19,6 +19,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -56,6 +58,7 @@ public class Account  implements UserDetails{
 	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
+	@OnDelete(action = OnDeleteAction.CASCADE)
     private List<BargainsAccounts > bargainsAccounts;
 	
 	/**Constructors */
