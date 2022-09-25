@@ -92,6 +92,37 @@ public class BargainController {
 		return bargainsWAccomodaton;
 	}	
 	
+	@GetMapping("/chollos/ciudad/{id-ciudad}")
+	public List<Bargain> listByCity(@PathVariable(name="id-ciudad") Long idCity){
+		
+		List<Bargain> bargains = listBargains();
+		List<Bargain> bargainsWCity = new ArrayList<>() ;
+		
+		for (int i = 0; i < bargains.size(); i++) { 
+			if (bargains.get(i).getAccommodation().getCity().getId() == idCity) { //if a bargain has the same city id as the one specified 
+				bargainsWCity.add(bargains.get(i)); //It's added to the List that will be returned 
+			}
+		}
+		
+		return bargainsWCity;
+	}	
+	
+	@GetMapping("/chollos/alojamientos/categoria/{categoria}")
+	public List<Bargain> listByCategory(@PathVariable(name="categoria") String category){
+		
+		List<Bargain> bargains = listBargains();
+		List<Bargain> bargainsWCategory = new ArrayList<>() ;
+	System.out.println("enter");
+		for (int i = 0; i < bargains.size(); i++) { 
+			if (bargains.get(i).getAccommodation().getCategory().toLowerCase().equals(category.toLowerCase())) { //if a bargain has the same category  as the one specified (lowercase the strings to compare)
+				bargainsWCategory.add(bargains.get(i)); //It's added to the List that will be returned 
+				System.out.println("match");
+			}
+		}
+		
+		return bargainsWCategory;
+	}	
+	
 	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/chollos")
 	public Bargain saveBargain(@RequestBody Bargain bargain) {
