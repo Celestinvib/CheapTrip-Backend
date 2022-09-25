@@ -112,11 +112,9 @@ public class BargainController {
 		
 		List<Bargain> bargains = listBargains();
 		List<Bargain> bargainsWCategory = new ArrayList<>() ;
-	System.out.println("enter");
 		for (int i = 0; i < bargains.size(); i++) { 
 			if (bargains.get(i).getAccommodation().getCategory().toLowerCase().equals(category.toLowerCase())) { //if a bargain has the same category  as the one specified (lowercase the strings to compare)
 				bargainsWCategory.add(bargains.get(i)); //It's added to the List that will be returned 
-				System.out.println("match");
 			}
 		}
 		
