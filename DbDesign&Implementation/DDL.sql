@@ -8,11 +8,12 @@ insert into Features (name) values
 	('piscina');
 
 insert into Cities (name) values
+	('Lisboa'),
 	('Gante'),
 	('Tallin'),
-    ('Barcelona'),
-    ('Reus'),
-    ('Tarragona');
+    	('Barcelona'),
+    	('Reus'),
+   	('Tarragona');
     
 insert into Accommodations (name, address, category, latitude, longitude, rating, city_id, status) values
 	('Pestana CR7', 'Rua do Comercio', 'Hotel', '38.70919', '-9.13596', '8.8', 1, 1),
