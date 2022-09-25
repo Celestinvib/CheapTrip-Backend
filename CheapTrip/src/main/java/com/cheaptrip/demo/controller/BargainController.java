@@ -1,6 +1,11 @@
 package com.cheaptrip.demo.controller;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +45,23 @@ public class BargainController {
 		return bargainServiceImpl.listBargains();
 	}
 	
+	@GetMapping("/chollos/expiran-pronto")
+	public List<Bargain> bargainsExpiringSoon(){
+		List<Bargain> bargains =  bargainServiceImpl.listBargains();
+		List<Bargain> bargainsExpiring = new ArrayList<>() ;
+		
+		java.sql.Date now = new java.sql.Date( new java.util.Date().getTime() );
+		java.sql.Date nextWeek= new java.sql.Date( now.getTime() + 168*60*60*1000);
+				
+		for (int i = 0; i < bargains.size(); i++) { 
+			if (bargains.get(i).getExpiration_date().compareTo(nextWeek) <= 0 ) { //if a bargain expire one week from now
+				bargainsExpiring.add(bargains.get(i)); //It's added to the List that will be returned 
+			}
+		}
+		
+		return bargainsExpiring;
+	}
+	
 	@GetMapping("/chollos/maxprecio/{precio}")
 	public List<Bargain> listByMaxPrice(@PathVariable(name="precio") Long precio){
 		
@@ -68,6 +90,35 @@ public class BargainController {
 		}
 		
 		return bargainsWAccomodaton;
+	}	
+	
+	@GetMapping("/chollos/ciudad/{id-ciudad}")
+	public List<Bargain> listByCity(@PathVariable(name="id-ciudad") Long idCity){
+		
+		List<Bargain> bargains = listBargains();
+		List<Bargain> bargainsWCity = new ArrayList<>() ;
+		
+		for (int i = 0; i < bargains.size(); i++) { 
+			if (bargains.get(i).getAccommodation().getCity().getId() == idCity) { //if a bargain has the same city id as the one specified 
+				bargainsWCity.add(bargains.get(i)); //It's added to the List that will be returned 
+			}
+		}
+		
+		return bargainsWCity;
+	}	
+	
+	@GetMapping("/chollos/alojamientos/categoria/{categoria}")
+	public List<Bargain> listByCategory(@PathVariable(name="categoria") String category){
+		
+		List<Bargain> bargains = listBargains();
+		List<Bargain> bargainsWCategory = new ArrayList<>() ;
+		for (int i = 0; i < bargains.size(); i++) { 
+			if (bargains.get(i).getAccommodation().getCategory().toLowerCase().equals(category.toLowerCase())) { //if a bargain has the same category  as the one specified (lowercase the strings to compare)
+				bargainsWCategory.add(bargains.get(i)); //It's added to the List that will be returned 
+			}
+		}
+		
+		return bargainsWCategory;
 	}	
 	
 	@PreAuthorize("hasRole('ADMIN')")
