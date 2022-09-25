@@ -22,6 +22,8 @@ The spring app and the database are deployed on<a href="https://www.heroku.com/h
 * Clear DB MySQL 
 * Heroku 
 
+## 🚀 Deploy:
+ ·CheapTrip-Backend: https://pcn-cheaptrip-api.herokuapp.com
 ## 🔗URIs endpoints: 
 
 ```
@@ -38,7 +40,12 @@ DELETE    /alojamientos/{id}
 
 Chollo
 GET       /chollos
+GET       /todos/chollos
 GET       /chollos/maxprecio/{precio}
+GET       /chollos/expiran-pronto
+GET       /chollos/alojamiento/{id-alojamiento}
+GET       /chollos/ciudad/{id-ciudad}
+GET       /chollos/alojamientos/categoria/{categoria}
 GET       /chollos/{id}
 POST      /chollos
 PUT       /chollos/{id}
@@ -49,6 +56,7 @@ Cuentas
 GET       /cuentas
 GET       /cuenta/{id}
 GET       /cuentas/{email}
+GET       /obtener-rol
 POST      /registrar
 POST      /cuentas/admin
 PUT       /cuentas/{id}
@@ -83,18 +91,23 @@ DELETE    /rasgos/{id}
 Rasgos-Alojamientos
 GET       /rasgos-alojamientos
 GET       /rasgos-alojamientos/{id}
+GET       /rasgos-alojamiento/{id-alojamiento}
+GET       /rasgo-alojamientos/{id-rasgo}
 POST      /rasgos-alojamientos
 PUT       /rasgos-alojamientos/{id}
 DELETE    /rasgos-alojamientos/{id}
 
 Chollo-Cuenta
 GET       /reservas
-GET       /reservas/{id}
-GET       /chollos-reservados/{id_cuenta}
+GET       /chollo-cuenta/{id}
+GET       /reservas/{id_cuenta}
 GET       /chollos-favoritos/{id_cuenta}
 GET       /chollos-cuentas/{id}
+POST      /reservas/
+POST      /chollos-favoritos/
 PUT       /chollos-cuentas/{id}
 PUT       /chollo-reservado/cambiar-estado/{id}
 PUT       /chollo-favorito/cambiar-estado/{id}
 DELETE    /chollos-cuentas/{id}
 ```
+
