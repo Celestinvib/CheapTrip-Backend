@@ -259,10 +259,36 @@ public class AccountController {
         return accountUpdated;
     }
 	
-	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/cuentas/{id}")
-	public String deleteAccount(@PathVariable(name="id")long id) {
-		iUserDAO.deleteById(id);
-		return "Account deleted.";
+	public ResponseEntity deleteAccount(@PathVariable(name="id")long id) {
+		Account accountSelected = accountServiceImpl.accountByID(id);
+
+		if (accountSelected == null) {
+			
+			return new ResponseEntity<Object>("No account found with that id...",HttpStatus.INTERNAL_SERVER_ERROR);
+		
+		}else {
+			
+			String accountSelectedEmail = accountServiceImpl.accountByID(id).getEmail();
+			String loggedAccountEmail = ((Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getEmail();
+
+			Set<Role> accountRoles = ((Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getRoles();
+
+			HashSet<String> userRolesArray = new HashSet<String>(accountRoles.size());
+
+			// Get all the roles 
+			for (Role role : accountRoles) {
+				userRolesArray.add(role.toString());
+			}
+ 
+			//If the account that is trying to delete is the same that is making the request (account logged) or is an admin account allows to deletes it
+			if (accountSelectedEmail.equals(loggedAccountEmail) || userRolesArray.contains("ROLE_ADMIN") == true) {  
+
+					iUserDAO.deleteById(id);		
+					return new ResponseEntity<Object>("Account deleted", HttpStatus.OK);
+			}else {
+				return new ResponseEntity<Object>("You have no permission to delete this account",HttpStatus.UNAUTHORIZED);
+			}
+		}
 	}
 }
