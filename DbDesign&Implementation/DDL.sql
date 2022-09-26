@@ -13,7 +13,15 @@ insert into Cities (name) values
 	('Tallin'),
     	('Barcelona'),
     	('Reus'),
-   	('Tarragona');
+   	('Tarragona'),
+	('Paris'),
+    	('Sevilla'),
+    	('China'),
+    	('New York'),
+    	('Amsterdam'),
+    	('Venecia'),
+    	('Granada'),
+    	('Madrid');
     
 insert into Accommodations (name, address, category, latitude, longitude, rating, city_id, status) values
 	('Pestana CR7', 'Rua do Comercio', 'Hotel', '38.70919', '-9.13596', '8.8', 1, 1),
