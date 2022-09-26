@@ -3,9 +3,16 @@ insert into Roles (name) values
 	('ROLE_USER');
 
 insert into Features (name) values
-	('wifi'),
-	('sala de juegos'),
-	('piscina');
+	('Wifi'),
+	('Sala de juegos'),
+	('Piscina'),
+	('Desayuno incluido'),
+    	('Late check out'),
+    	('Vistas a los canales'),
+    	('Desayuno y comida'),
+    	('Entrada a Caldea'),
+    	('Gimnasio'),
+    	('Botella de vino');
 
 insert into Cities (name) values
 	('Lisboa'),
@@ -25,10 +32,18 @@ insert into Cities (name) values
     
 insert into Accommodations (name, address, category, latitude, longitude, rating, city_id, status) values
 	('Pestana CR7', 'Rua do Comercio', 'Hotel', '38.70919', '-9.13596', '8.8', 1, 1),
-    ('Chiado Luxury', 'Rua das Flores', 'Hotel', '38.70876', '-9.14357', '10', 1, 1),
-    ('Uppelink', 'Saint-Michielsplein Strasse', 'Hostal', '51.05393', '3.71986', '8.3', 11, 1),
-    ('Fat Margaret Hotel', 'Pohja pst', 'Hostal', '59.44421', '24.74892', '8.6', 21, 1),
-    ('Hestia Hotel', 'Uus-Sadama', 'Hotel', '59.44283', '24.76767', '8.6', 21, 1);
+    	('Chiado Luxury', 'Rua das Flores', 'Hotel', '38.70876', '-9.14357', '10', 1, 1),
+    	('Uppelink', 'Saint-Michielsplein Strasse', 'Hostal', '51.05393', '3.71986', '8.3', 11, 1),
+    	('Fat Margaret Hotel', 'Pohja pst', 'Hostal', '59.44421', '24.74892', '8.6', 21, 1),
+    	('Hestia Hotel', 'Uus-Sadama', 'Hotel', '59.44283', '24.76767', '8.6', 21, 1);
+	('Innside Madrid Gran Vía', 'Calle de Mesonero Romanos, 13', 'Hotel4', '40.42058520047044', '-3.703881307264552', '8.4', 151, 1),
+    	('Timhotel Montmartre', 'Place Emile Godeu, 11', 'Hotel3', '48.88599448726617', '2.3376619768515003', '8.6', 81, 1),
+    	('Hotel Alfonso XIII', 'Calle San Fernando, 2', 'Hotel5', '37.381660099298585', '-5.992611982084022', '10', 91, 1),
+    	('Jinjiang Business Hotel', 'Youyi Rd', 'Hotel2', '43.65101734037345', '111.98840344974265', '9.6', 101, 1),
+    	('Martinique', 'Calle de Mesonero Romanos, 13', 'Hotel4', '40.74831970675963', '-73.98778248586746', '8.4', 111, 1),
+    	('Conservatorium Hotel', 'Calle de Mesonero Romanos, 13', 'Hotel5', '52.35891303451569', '4.879631662626067', '9.2', 121, 1),
+    	('Aman Venice', 'Palazzo Papadopoli, 1364', 'Hotel5', '45.437217618345514', '12.33178229264448', '9.6', 131, 1), 
+    	('Palacio De Santa Paula', 'Calle de Gran Vía de Colón, 31', 'Hotel5', '37.17957373738918', '-3.5997858699269267', '9.2', 141, 1);
     
     
 insert into Flights (id, origin, destination, departure_date, arrival_date, status) values
@@ -50,4 +65,6 @@ insert into Bargains_Accounts (bargain_id, account_id, booked, bookmarked) value
 	(31, 1, 0, 1),
     (41, 21, 1, 0);
     
-INSERT INTO `heroku_8d815fbd277b0f2`.`accounts` (`birth_date`, `creation_date`, `email`, `name`, `phone_number`, `status`, `surnames`) VALUES ('2001-03-23 01:50:55', '2022-09-25 19:15:55', 'nicolasgarcia@gmail.com', 'Nicolas', '608534015', '1', 'Garcia-Vallaure Conte');
+INSERT INTO `heroku_8d815fbd277b0f2`.`accounts` 
+
+	(`birth_date`, `creation_date`, `email`, `name`, `phone_number`, `status`, `surnames`) VALUES ('2001-03-23 01:50:55', '2022-09-25 19:15:55', 'nicolasgarcia@gmail.com', 'Nicolas', '608534015', '1', 'Garcia-Vallaure Conte');
