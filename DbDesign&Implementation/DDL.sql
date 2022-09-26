@@ -49,7 +49,12 @@ insert into Accommodations (name, address, category, latitude, longitude, rating
 insert into Flights (id, origin, destination, departure_date, arrival_date, status) values
 	('LK5632_Iberia', 31, 1, '2022-10-10', '2022-10-14', 1),
     ('VY1593_Vueling', 41, 11, '2022-10-03', '2022-10-06', 1),
-    ('VY2293_Vueling', 31, 21, '2022-10-22', '2022-10-24', 1);
+    ('VY2293_Vueling', 31, 21, '2022-10-22', '2022-10-24', 1),
+    ('MG4591_Ryanair', 31, 81, '2022-11-10', '2022-11-16', 1),
+    ('XV2357_Qatar-Airways', 21, 101, '2022-12-23', '2022-12-28', 1),
+    ('ZT9373_American-Airways', 21, 111, '2022-10-30', '2022-11-05', 1),
+    ('WM8856_Lufthansa', 31, 121, '2022-11-27', '2022-12-01', 1),
+    ('PF1172_Iberia', 21, 131, '2022-11-20', '2022-11-24', 1);
     
 insert into Bargains (title, image, price, description, expiration_date, outbound_flight, return_flight, accommodation_id, status) values
 	('Estancia por las Ruas Portuguesas', 'https://images.unsplash.com/photo-1579971030646-263a0ef4aa34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80', '150', 'una descripcion', '2022-09-27', 'LK5632_Iberia', 'LK5632_Iberia', 11, 1),
